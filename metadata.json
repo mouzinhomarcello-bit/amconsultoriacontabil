@@ -1,0 +1,6 @@
+{
+  "name": "A M Consultoria e Auditoria Contábil",
+  "description": "Contabilidade inteligente, consultoria tributária e auditoria contábil em Manaus/AM para empresas que querem evoluir com tecnologia e segurança.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

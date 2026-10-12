@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <rect width="120" height="120" rx="24" fill="#081B33"/>
+  <!-- Curved growth arrow -->
+  <path d="M16 62 C 30 55, 46 39, 57 23" stroke="#F59E0B" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <path d="M46 21 L62 18 L58 33 Z" fill="#F59E0B"/>
+  <!-- 4 Ascending Bars -->
+  <rect x="18" y="76" width="10" height="22" rx="1.5" fill="#F59E0B"/>
+  <rect x="33" y="65" width="10" height="33" rx="1.5" fill="#F59E0B"/>
+  <rect x="48" y="53" width="10" height="45" rx="1.5" fill="#F59E0B"/>
+  <rect x="63" y="40" width="10" height="58" rx="1.5" fill="#F59E0B"/>
+  <!-- A.M Monogram -->
+  <text x="79" y="86" fill="#FFFFFF" font-family="Syne, Arial, sans-serif" font-weight="800" font-size="26" letter-spacing="-1">A.M</text>
+</svg>
