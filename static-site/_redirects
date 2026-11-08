@@ -1,0 +1,5 @@
+# Rotas antigas sem página própria
+/agendamento   /contato/   301
+/solucoes      /especialidades/   301
+# Domínio único (sem www)
+https://www.amconsultoriacontabil.com.br/*  https://amconsultoriacontabil.com.br/:splat  301!

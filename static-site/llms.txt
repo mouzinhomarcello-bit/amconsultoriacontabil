@@ -1,0 +1,25 @@
+# A M Consultoria e Auditoria Contábil
+
+> Escritório de contabilidade em Manaus/AM (Brasil), A M CONSULTORIA E AUDITORIA CONTABIL LTDA, CNPJ 62.806.802/0001-40, fundado em 2025-09-19. Presta contabilidade empresarial, fiscal e tributário, departamento pessoal, consultoria e auditoria contábil e tributária para micro, pequenas e médias empresas no Simples Nacional, Lucro Presumido e Lucro Real, com atendimento 100% digital em Manaus e em todo o Brasil. Não atende MEI.
+
+- Endereço: Rua Mocajuba, nº 93, Sala 05, Dom Pedro I, Manaus/AM, CEP 69040-530
+- WhatsApp: (92) 9431-2735 e (11) 98202-7102 · E-mail: contabilamconsultoria1@gmail.com
+- Horário: Segunda a sexta, das 8h às 18h
+- Instagram: https://www.instagram.com/am.consultoria.contabil/
+
+## Páginas principais
+- [Serviços](https://amconsultoriacontabil.com.br/servicos/): escopo de contabilidade, fiscal, departamento pessoal, consultoria e auditoria
+- [Trocar de contador](https://amconsultoriacontabil.com.br/trocar-contador/): passo a passo da transição
+- [Abrir empresa em Manaus](https://amconsultoriacontabil.com.br/abrir-empresa/): etapas, JUCEA, inscrições e regime tributário
+- [Perguntas frequentes](https://amconsultoriacontabil.com.br/faq/): 16 respostas diretas
+- [Sobre](https://amconsultoriacontabil.com.br/sobre/): dados da empresa e equipe
+- [Contato](https://amconsultoriacontabil.com.br/contato/)
+
+## Conteúdos e pesquisas
+- [Simples Nacional ou Lucro Presumido em 2026? Estudo A M com empresas de serviços](https://amconsultoriacontabil.com.br/conteudos/simples-nacional-ou-lucro-presumido-estudo-manaus-2026/): Estudo original A M 2026: carga efetiva do Simples Nacional (Anexos III e V) × Lucro Presumido para empresas de serviços, de R$ 180 mil a R$ 4,8 milhões de receita.
+- [Quando sua empresa deve trocar de contador? 7 sinais claros](https://amconsultoriacontabil.com.br/conteudos/quando-trocar-de-contador/): Guias em cima da hora, falta de balancete, CNDs bloqueadas e nenhuma orientação sobre as mudanças de 2026: 7 sinais de que é hora de trocar de contador.
+- [Simples Nacional: quais obrigações sua empresa precisa acompanhar além do DAS?](https://amconsultoriacontabil.com.br/conteudos/obrigacoes-simples-nacional-alem-do-das/): PGDAS-D, DEFIS, eSocial, DCTFWeb, escrituração contábil, DIFAL e notas fiscais: o que a empresa do Simples Nacional precisa cumprir além do DAS mensal.
+- [Dividendos e Lucro Presumido: o que mudou em 2026](https://amconsultoriacontabil.com.br/conteudos/dividendos-e-lucro-presumido-o-que-mudou-em-2026/): Retenção de 10% sobre dividendos acima de R$ 50 mil/mês (Lei 15.270/2025) e presunção maior no Lucro Presumido acima de R$ 5 milhões (LC 224/2025): o que muda.
+
+## Dados abertos
+- [Simulação Simples × Presumido 2026 (JSON, CC BY 4.0)](https://amconsultoriacontabil.com.br/conteudos/simples-nacional-ou-lucro-presumido-estudo-manaus-2026/dados.json)
