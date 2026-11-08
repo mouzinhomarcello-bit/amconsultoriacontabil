@@ -1,0 +1,107 @@
+{
+ "titulo": "Simulação A M 2026 — carga efetiva Simples × Presumido (serviços)",
+ "fonte": "https://amconsultoriacontabil.com.br",
+ "licenca": "CC BY 4.0",
+ "data": "2026-11-08",
+ "premissas": "Ver metodologia em https://amconsultoriacontabil.com.br/conteudos/simples-nacional-ou-lucro-presumido-estudo-manaus-2026/",
+ "cenario_folha_30_anexo_III": [
+  {
+   "receita_anual": 180000,
+   "simples": 0.06,
+   "presumido_iss5": 0.2233,
+   "presumido_iss2": 0.1933
+  },
+  {
+   "receita_anual": 360000,
+   "simples": 0.086,
+   "presumido_iss5": 0.2233,
+   "presumido_iss2": 0.1933
+  },
+  {
+   "receita_anual": 720000,
+   "simples": 0.1105,
+   "presumido_iss5": 0.2233,
+   "presumido_iss2": 0.1933
+  },
+  {
+   "receita_anual": 1200000,
+   "simples": 0.1303,
+   "presumido_iss5": 0.2353,
+   "presumido_iss2": 0.2053
+  },
+  {
+   "receita_anual": 1800000,
+   "simples": 0.1402,
+   "presumido_iss5": 0.242,
+   "presumido_iss2": 0.212
+  },
+  {
+   "receita_anual": 2400000,
+   "simples": 0.1577,
+   "presumido_iss5": 0.2453,
+   "presumido_iss2": 0.2153
+  },
+  {
+   "receita_anual": 3600000,
+   "simples": 0.1751,
+   "presumido_iss5": 0.2486,
+   "presumido_iss2": 0.2186
+  },
+  {
+   "receita_anual": 4800000,
+   "simples": 0.195,
+   "presumido_iss5": 0.2503,
+   "presumido_iss2": 0.2203
+  }
+ ],
+ "cenario_folha_10_anexo_V": [
+  {
+   "receita_anual": 180000,
+   "simples": 0.155,
+   "presumido_iss5": 0.1833,
+   "presumido_iss2": 0.1533
+  },
+  {
+   "receita_anual": 360000,
+   "simples": 0.1675,
+   "presumido_iss5": 0.1833,
+   "presumido_iss2": 0.1533
+  },
+  {
+   "receita_anual": 720000,
+   "simples": 0.1812,
+   "presumido_iss5": 0.1833,
+   "presumido_iss2": 0.1533
+  },
+  {
+   "receita_anual": 1200000,
+   "simples": 0.1907,
+   "presumido_iss5": 0.1953,
+   "presumido_iss2": 0.1653
+  },
+  {
+   "receita_anual": 1800000,
+   "simples": 0.1955,
+   "presumido_iss5": 0.202,
+   "presumido_iss2": 0.172
+  },
+  {
+   "receita_anual": 2400000,
+   "simples": 0.2041,
+   "presumido_iss5": 0.2053,
+   "presumido_iss2": 0.1753
+  },
+  {
+   "receita_anual": 3600000,
+   "simples": 0.2127,
+   "presumido_iss5": 0.2086,
+   "presumido_iss2": 0.1786
+  },
+  {
+   "receita_anual": 4800000,
+   "simples": 0.1925,
+   "presumido_iss5": 0.2103,
+   "presumido_iss2": 0.1803
+  }
+ ]
+}
