@@ -184,6 +184,7 @@ def page(path, title, desc, body, h1, *, extra_schema=None, parent=None, ptype="
 <meta name="twitter:title" content="{e(title)}">
 <meta name="twitter:description" content="{e(desc)}">
 <meta name="google-site-verification" content="qJIGMOABqli3Hxg60j7vU32LTNrX4E3hWsRZ2ecHOqI">
+<meta name="msvalidate.01" content="993206048267B258A0408725297B07B2">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="alternate" type="text/plain" href="/llms.txt" title="Resumo do site para IA">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
