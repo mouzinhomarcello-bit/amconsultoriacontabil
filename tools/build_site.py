@@ -52,10 +52,9 @@ FONTES = {
     "jc15270": ("Jornal Contábil — Lei 15.270 define regras para taxação de lucros e dividendos", "https://jornalcontabil.com.br/noticia/lei-15-270-define-regras-para-taxacao-de-lucros-e-dividendos-a-partir-de-2026/"),
 }
 
-NAV = [("/", "Início"), ("/servicos/", "Serviços"), ("/especialidades/", "Especialidades"),
-       ("/trocar-contador/", "Trocar de contador"), ("/abrir-empresa/", "Abrir empresa"),
-       ("/conteudos/", "Conteúdos"), ("/faq/", "Perguntas frequentes"), ("/sobre/", "Sobre"),
-       ("/contato/", "Contato")]
+NAV = [("/servicos/", "Serviços"), ("/trocar-contador/", "Trocar de contador"),
+       ("/abrir-empresa/", "Abrir empresa"), ("/conteudos/", "Conteúdos"), ("/faq/", "Dúvidas"),
+       ("/sobre/", "Sobre"), ("/contato/", "Contato")]
 
 PAGES = []  # (path, priority, changefreq)
 
@@ -68,8 +67,8 @@ def org_schema():
         "legalName": RAZAO,
         "alternateName": ["A M Consultoria", "AM Consultoria Contábil", "A M Consultoria Contábil"],
         "url": SITE + "/",
-        "logo": SITE + "/favicon.svg",
-        "image": SITE + "/favicon.svg",
+        "logo": SITE + "/assets/icon-512.png",
+        "image": SITE + "/assets/og-image.jpg",
         "taxID": CNPJ,
         "foundingDate": FUNDACAO,
         "description": "Escritório de contabilidade em Manaus/AM: contabilidade empresarial, fiscal e tributário, departamento pessoal, consultoria e auditoria contábil e tributária, com atendimento 100% digital para empresas de Manaus e de todo o Brasil.",
@@ -152,7 +151,8 @@ def breadcrumb(path, titulo, parent=None):
 
 
 def page(path, title, desc, body, h1, *, extra_schema=None, parent=None, ptype="WebPage",
-         priority="0.8", freq="monthly", lead="", published=PUBLICADO, modified=ATUALIZADO, og_type="website"):
+         priority="0.8", freq="monthly", lead="", published=PUBLICADO, modified=ATUALIZADO, og_type="website",
+         hero_extra=None, hero_ctas=None):
     url = SITE + path
     bc_html, bc_schema = breadcrumb(path, h1 if len(h1) < 60 else title.split(" | ")[0], parent)
     webpage = {"@type": ptype, "@id": url + "#pagina", "url": url, "name": title, "description": desc,
@@ -165,6 +165,9 @@ def page(path, title, desc, body, h1, *, extra_schema=None, parent=None, ptype="
     ld = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=1)
     nav = "".join(f'<li><a href="{u}"{" aria-current=\"page\"" if u == path else ""}>{n}</a></li>' for u, n in NAV)
     lead_html = f'<p class="lead">{lead}</p>' if lead else ""
+    hero_cls = "hero hero-home" if path == "/" else "hero"
+    eyebrow = '<p class="eyebrow">Contabilidade digital · Manaus/AM e todo o Brasil</p>' if path == "/" else ""
+    hero_side = hero_extra or ""
     doc = f"""<!doctype html>
 <html lang="pt-BR">
 <head>
@@ -174,22 +177,29 @@ def page(path, title, desc, body, h1, *, extra_schema=None, parent=None, ptype="
 <meta name="description" content="{e(desc)}">
 <link rel="canonical" href="{url}">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="theme-color" content="#002049">
 <meta property="og:type" content="{og_type}">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="{e(NOME)}">
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:url" content="{url}">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="{SITE}/assets/og-image.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Logo A M Consultoria Contábil">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{e(title)}">
 <meta name="twitter:description" content="{e(desc)}">
+<meta name="twitter:image" content="{SITE}/assets/og-image.jpg">
 <meta name="google-site-verification" content="qJIGMOABqli3Hxg60j7vU32LTNrX4E3hWsRZ2ecHOqI">
 <meta name="msvalidate.01" content="993206048267B258A0408725297B07B2">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="alternate" type="text/plain" href="/llms.txt" title="Resumo do site para IA">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
 <script type="application/ld+json">
 {ld}
 </script>
@@ -198,24 +208,36 @@ def page(path, title, desc, body, h1, *, extra_schema=None, parent=None, ptype="
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 <header class="topo">
  <div class="wrap topo-in">
-  <a class="marca" href="/" aria-label="{e(NOME)} — página inicial"><span class="sigla">A M</span><span>Consultoria Contábil</span></a>
-  <nav aria-label="Menu principal"><ul class="menu">{nav}</ul></nav>
-  <a class="btn btn-sm" href="/orcamento/">Solicitar orçamento</a>
+  <a class="marca" href="/" aria-label="{e(NOME)} — página inicial"><picture><source srcset="/assets/logo-am.webp" type="image/webp"><img src="/assets/logo-am.png" alt="A M Consultoria Contábil" width="148" height="56"></picture></a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-principal">Menu</button>
+  <nav aria-label="Menu principal" id="menu-principal"><ul class="menu">{nav}</ul></nav>
+  <a class="btn btn-ouro btn-sm topo-cta" href="/orcamento/">Solicitar orçamento</a>
  </div>
 </header>
 <main id="conteudo">
-<div class="wrap">
-{bc_html}
 <article class="pagina">
-<header class="cab"><h1>{e(h1)}</h1>{lead_html}</header>
+<header class="{hero_cls}">
+ <div class="hero-grade" aria-hidden="true"></div>
+ <div class="wrap hero-in">
+  <div class="hero-txt">
+   {bc_html}
+   {eyebrow}
+   <h1>{e(h1)}</h1>
+   {lead_html}
+   {hero_ctas or ""}
+  </div>
+  {hero_side}
+ </div>
+</header>
+<div class="wrap corpo">
 {body}
-</article>
 </div>
+</article>
 </main>
 <footer class="rodape">
  <div class="wrap rod-grid">
   <section aria-labelledby="rod-empresa">
-   <h2 id="rod-empresa">{e(NOME)}</h2>
+   <h2 id="rod-empresa" class="rod-logo"><img src="/assets/logo-am.png" alt="{e(NOME)}" width="170" height="64" loading="lazy"></h2>
    <p>{e(RAZAO)}<br>CNPJ {CNPJ}</p>
    <address>{e(ENDERECO['rua'])} — {e(ENDERECO['bairro'])}<br>{ENDERECO['cidade']}/{ENDERECO['uf']} · CEP {ENDERECO['cep']}<br>
    WhatsApp: <a href="https://wa.me/{TEL1_INTL[1:]}">{TEL1_TXT}</a> · <a href="https://wa.me/{TEL2_INTL[1:]}">{TEL2_TXT}</a><br>
@@ -227,13 +249,23 @@ def page(path, title, desc, body, h1, *, extra_schema=None, parent=None, ptype="
    <li><a href="/conteudos/">Artigos e estudos</a></li><li><a href="/faq/">Perguntas frequentes</a></li>
    <li><a href="/portal-do-cliente/">Portal do Cliente</a></li><li><a href="/sobre/">Sobre a A M</a></li>
    <li><a href="/contato/">Contato</a></li><li><a href="/orcamento/">Orçamento</a></li></ul></nav>
-  <section aria-labelledby="rod-redes"><h2 id="rod-redes">Redes</h2><ul>
+  <section aria-labelledby="rod-redes"><h2 id="rod-redes">Redes e acesso</h2><ul>
    <li><a href="{INSTAGRAM}" rel="noopener me">Instagram @am.consultoria.contabil</a></li>
    <li><a href="{FACEBOOK}" rel="noopener me">Facebook</a></li>
    <li><a href="{PORTAL}" rel="noopener">Acessar Portal do Cliente (Onvio)</a></li></ul></section>
  </div>
  <p class="wrap legal">© {PUBLICADO[:4]} {e(NOME)} Ltda. Conteúdo informativo; não substitui análise individual do caso da sua empresa.</p>
 </footer>
+<a class="zap" href="https://wa.me/{TEL1_INTL[1:]}" aria-label="Falar pelo WhatsApp"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2s.2-1.1.1-1.2-.2-.2-.4-.3Z"/></svg></a>
+<script>
+(function(){{var d=document.documentElement;d.classList.add('js');
+var b=document.querySelector('.menu-btn'),n=document.getElementById('menu-principal');
+if(b&&n){{b.addEventListener('click',function(){{var o=n.classList.toggle('aberto');b.setAttribute('aria-expanded',o)}})}}
+if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var io=new IntersectionObserver(function(es){{es.forEach(function(x){{if(x.isIntersecting){{x.target.classList.add('visivel');io.unobserve(x.target)}}}})}},{{rootMargin:'0px 0px -8% 0px'}});
+document.querySelectorAll('.corpo > section, .corpo > aside, .card').forEach(function(el){{el.classList.add('revela');io.observe(el)}});
+}})();
+</script>
 </body>
 </html>
 """
@@ -246,7 +278,7 @@ def page(path, title, desc, body, h1, *, extra_schema=None, parent=None, ptype="
 
 def cta(texto="Fale com um contador da A M"):
     return (f'<aside class="cta" aria-label="Contato"><p><strong>{e(texto)}.</strong> Atendimento 100% digital para Manaus e todo o Brasil.</p>'
-            f'<p><a class="btn" href="/orcamento/">Solicitar orçamento</a> <a class="btn btn-sec" href="https://wa.me/{TEL1_INTL[1:]}">Falar pelo WhatsApp</a></p></aside>')
+            f'<p><a class="btn btn-ouro" href="/orcamento/">Solicitar orçamento</a> <a class="btn btn-linha" href="https://wa.me/{TEL1_INTL[1:]}">Falar pelo WhatsApp</a></p></aside>')
 
 
 # ================================================================ ESTUDO ORIGINAL (cálculos)
@@ -312,7 +344,14 @@ def build():
         ("Consultoria contábil, tributária e financeira", "Plano de contas, centros de custo, fluxo de caixa, separação entre pessoa física e jurídica e reenquadramento tributário.", "/servicos/#consultoria"),
         ("Auditoria contábil e tributária", "Exame de demonstrações, revisão preventiva de apurações dos últimos 5 anos e cruzamento SPED × NF-e × bancos.", "/servicos/#auditoria"),
     ]
-    cards = "".join(f'<li class="card"><h3><a href="{u}">{e(t)}</a></h3><p>{e(d)}</p></li>' for t, d, u in servicos_resumo)
+    ICONES = [
+        '<path d="M4 19V5m0 14h16M8 15v-4m4 4V8m4 7v-6"/>',
+        '<path d="M7 3h7l5 5v13H7zM14 3v5h5M10 13h6M10 17h6"/>',
+        '<path d="M16 19v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1M9.5 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6M21 19v-1a4 4 0 0 0-3-3.9M16 4.1a3 3 0 0 1 0 5.8"/>',
+        '<path d="M12 3v3m0 12v3M3 12h3m12 0h3M6 6l2 2m8 8 2 2M6 18l2-2m8-8 2-2"/><circle cx="12" cy="12" r="3"/>',
+        '<path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zm9 16-4-4M8.5 11l2 2 3.5-4"/>',
+    ]
+    cards = "".join(f'<li class="card card-serv"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">{ICONES[i]}</svg></span><h3><a href="{u}">{e(t)}</a></h3><p>{e(d)}</p></li>' for i, (t, d, u) in enumerate(servicos_resumo))
     home_faq = [
         ("O que a A M Consultoria faz?", f"A {NOME} é um escritório de contabilidade em Manaus/AM (CNPJ {CNPJ}) que oferece contabilidade empresarial, fiscal e tributário, departamento pessoal, consultoria e auditoria contábil e tributária, com atendimento 100% digital pelo Portal do Cliente."),
         ("A A M atende empresas fora de Manaus?", "Sim. O atendimento e o fluxo de documentos são digitais, então a A M atende empresas de Manaus, do interior do Amazonas e de outros estados."),
@@ -320,16 +359,15 @@ def build():
         ("Onde fica o escritório?", f"{ENDERECO['rua']}, bairro {ENDERECO['bairro']}, {ENDERECO['cidade']}/{ENDERECO['uf']}, CEP {ENDERECO['cep']}. Atendimento {HORARIO.lower()}."),
     ]
     body = f"""
-<p class="selos"><span>Contabilidade digital</span><span>Manaus/AM e todo o Brasil</span><span>CNPJ {CNPJ}</span></p>
-<p>A <strong>{e(NOME)}</strong> é um escritório de contabilidade em Manaus/AM que cuida da contabilidade, dos impostos e da folha de pagamento de micro, pequenas e médias empresas, com processos digitais e atendimento consultivo direto com contadores. Atendemos empresas no Simples Nacional, Lucro Presumido e Lucro Real, em Manaus e em todo o país.</p>
-<p><a class="btn" href="/orcamento/">Solicitar orçamento</a> <a class="btn btn-sec" href="/trocar-contador/">Quero trocar de contador</a> <a class="btn btn-sec" href="/abrir-empresa/">Quero abrir minha empresa</a></p>
+<section class="intro" aria-label="Apresentação"><p>A <strong>{e(NOME)}</strong> é um escritório de contabilidade em Manaus/AM que cuida da contabilidade, dos impostos e da folha de pagamento de micro, pequenas e médias empresas, com processos digitais e atendimento consultivo direto com contadores. Atendemos empresas no Simples Nacional, Lucro Presumido e Lucro Real, em Manaus e em todo o país.</p>
+<ul class="stack" aria-label="Tecnologias e sistemas que usamos"><li>Onvio</li><li>Domínio · Thomson Reuters</li><li>eSocial</li><li>SPED</li><li>NF-e / NFS-e</li><li>FGTS Digital</li><li>DCTFWeb</li></ul></section>
 
 <section aria-labelledby="h-servicos"><h2 id="h-servicos">Serviços de contabilidade em Manaus</h2>
 <ul class="cards">{cards}</ul>
 <p><a href="/servicos/">Ver o escopo completo de cada serviço</a></p></section>
 
-<section aria-labelledby="h-dif"><h2 id="h-dif">Como trabalhamos</h2>
-<dl class="pilares">
+<section aria-labelledby="h-dif" class="faixa"><h2 id="h-dif">Como trabalhamos</h2>
+<dl class="pilares pilares-4">
 <dt>Tecnologia</dt><dd>Documentos, guias, balancetes e certidões ficam no <a href="/portal-do-cliente/">Portal do Cliente (Onvio, Domínio/Thomson Reuters)</a>, disponível 24 horas.</dd>
 <dt>Atendimento</dt><dd>Você conversa diretamente com contadores que conhecem o seu CNPJ e explicam as normas em linguagem clara.</dd>
 <dt>Segurança</dt><dd>Monitoramento de certidões negativas (CNDs) e conferência preventiva de obrigações acessórias para reduzir o risco de autuação.</dd>
@@ -355,11 +393,27 @@ def build():
 <p><a href="/faq/">Ver todas as perguntas frequentes</a></p>
 {cta()}
 """
+    hero_ctas = ('<p class="hero-ctas"><a class="btn btn-ouro" href="/orcamento/">Solicitar orçamento</a> '
+                 '<a class="btn btn-linha" href="/trocar-contador/">Quero trocar de contador</a> '
+                 '<a class="btn btn-linha" href="/abrir-empresa/">Quero abrir minha empresa</a></p>'
+                 f'<p class="hero-meta">CNPJ {CNPJ} · {ENDERECO["cidade"]}/{ENDERECO["uf"]} · Atendimento 100% digital</p>')
+    painel = """<figure class="painel" aria-label="Ilustração do Portal do Cliente">
+  <div class="painel-top"><span></span><span></span><span></span><b>Portal do Cliente · A M</b></div>
+  <div class="painel-graf" aria-hidden="true"><i style="--h:38%"></i><i style="--h:52%"></i><i style="--h:66%"></i><i style="--h:84%"></i>
+   <svg viewBox="0 0 200 100" preserveAspectRatio="none"><path d="M4 92 C 60 80, 120 52, 186 12" fill="none" stroke="#ECB02C" stroke-width="5" stroke-linecap="round"/><path d="M170 8 L192 8 L186 30" fill="#ECB02C"/></svg></div>
+  <ul class="painel-lista">
+   <li><span class="dot ok"></span>Guias do mês <em>disponíveis</em></li>
+   <li><span class="dot ok"></span>Certidões negativas <em>monitoradas</em></li>
+   <li><span class="dot ok"></span>Balancete e DRE <em>no portal</em></li>
+   <li><span class="dot ouro"></span>Obrigações acessórias <em>conferidas</em></li>
+  </ul>
+  <figcaption>Ilustração. Guias, relatórios e certidões ficam no Portal do Cliente, 24 horas.</figcaption>
+ </figure>"""
     page("/", f"Contabilidade em Manaus/AM | A M Consultoria Contábil",
          "Escritório de contabilidade em Manaus/AM: contabilidade, impostos, folha, consultoria e auditoria para o Simples, Presumido e Real. Atendimento 100% digital.",
-         body, "Escritório de contabilidade em Manaus para empresas que querem crescer",
-         extra_schema=[faq_schema(home_faq)], priority="1.0", freq="weekly",
-         lead="Contabilidade, impostos e folha de pagamento com tecnologia, organização e atendimento consultivo.")
+         body, "Escritório de Contabilidade Digital: um investimento para sua empresa",
+         extra_schema=[faq_schema(home_faq)], priority="1.0", freq="weekly", hero_ctas=hero_ctas, hero_extra=painel,
+         lead="Contabilidade, impostos e folha de pagamento com tecnologia e atendimento consultivo, em Manaus/AM e em todo o Brasil.")
 
     # ---------- SERVIÇOS
     serv = [
@@ -509,7 +563,7 @@ def build():
 <dt>Folha de pagamento</dt><dd>Holerites, recibos de férias e documentos dos colaboradores.</dd></dl></section>
 <section aria-labelledby="h-tec"><h2 id="h-tec">Tecnologia por trás do atendimento</h2>
 <p>Captura automatizada de XMLs de notas fiscais e integração de extratos bancários (OFX) reduzem digitação e retrabalho, o que permite fechar a contabilidade no prazo e com mais conferência.</p></section>
-<p><a class="btn" href="{PORTAL}" rel="noopener">Acessar o Portal do Cliente</a></p>{cta()}
+<p><a class="btn btn-ouro" href="{PORTAL}" rel="noopener">Acessar o Portal do Cliente</a></p>{cta()}
 """
     page("/portal-do-cliente/", "Portal do Cliente: guias, balancetes e CNDs | A M Consultoria",
          "Portal do Cliente A M (Onvio/Domínio): guias de impostos, balancetes, DRE, certidões negativas, folha e documentos fiscais disponíveis 24 horas.",
@@ -572,7 +626,7 @@ def build():
 <p><label for="servico">Serviço desejado</label><select id="servico" name="servico">{opts_srv}</select></p>
 <p><label for="mensagem">Conte brevemente a necessidade da sua empresa</label><textarea id="mensagem" name="mensagem" rows="5"></textarea></p>
 <p><label class="check"><input type="checkbox" name="lgpd" required> Concordo com o tratamento dos meus dados exclusivamente para retorno comercial da {e(NOME)} Ltda, nos termos da LGPD (Lei nº 13.709/2018).</label></p>
-<p><button class="btn" type="submit">Solicitar proposta</button></p>
+<p><button class="btn btn-ouro" type="submit">Solicitar proposta</button></p>
 </form>
 """
     page("/orcamento/", f"Solicitar orçamento de contabilidade | A M Consultoria",
@@ -832,72 +886,185 @@ https://www.amconsultoriacontabil.com.br/*  https://amconsultoriacontabil.com.br
         "/llms.txt\n  Content-Type: text/plain; charset=utf-8\n\n/robots.txt\n  Content-Type: text/plain; charset=utf-8\n")
 
     # ---------- IndexNow key
-    key = secrets.token_hex(16)
+    key = "6c8eed4838e5bc22db961959049de48e"  # chave IndexNow fixa (já registrada)
     open(os.path.join(OUT, f"{key}.txt"), "w").write(key)
-    open(os.path.join(OUT, "..", "indexnow-key.txt"), "w").write(key)
 
     # ---------- favicon + css
     open(os.path.join(OUT, "favicon.svg"), "w").write(
-        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#081B33"/>'
-        '<text x="32" y="41" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700" fill="#fff" text-anchor="middle">AM</text></svg>')
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#002049"/>'
+        '<g fill="#ECB02C"><rect x="12" y="38" width="8" height="16" rx="1"/><rect x="24" y="32" width="8" height="22" rx="1"/>'
+        '<rect x="36" y="26" width="8" height="28" rx="1"/><rect x="48" y="18" width="8" height="36" rx="1"/>'
+        '<path d="M10 33 C 24 30, 38 22, 50 11 l-4 -1 l12 -3 l-3 12 l-2 -4 C 41 26, 26 34, 10 35 z"/></g></svg>')
     open(os.path.join(OUT, "assets/site.css"), "w").write(CSS)
+    import shutil as _sh
+    brand = os.path.join(os.path.dirname(os.path.abspath(__file__)), "brand")
+    for fn in ["logo-am.png", "logo-am.webp", "og-image.jpg", "icon-512.png"]:
+        _sh.copy(os.path.join(brand, fn), os.path.join(OUT, "assets", fn))
+    for fn in ["apple-touch-icon.png", "favicon-48.png"]:
+        _sh.copy(os.path.join(brand, fn), os.path.join(OUT, fn))
 
 
 CSS = """
-:root{--tinta:#081B33;--azul:#1769AA;--azul2:#0F4F82;--fundo:#F8FAFC;--card:#fff;--linha:#E2E8F0;--suave:#475569;--destaque:#E8F1F9}
+:root{--navy:#002049;--navy2:#011634;--navy3:#0A2D5C;--ouro:#ECB02C;--ouro2:#F6C95A;--ouro-esc:#B9860F;
+--fundo:#F5F7FB;--card:#fff;--linha:#E1E7F0;--texto:#0E1B2E;--suave:#4A5A70;--azul:#1D5FA8;--gelo:#EAF1FA;
+--raio:16px;--sombra:0 1px 2px rgba(0,32,73,.06),0 8px 24px rgba(0,32,73,.08)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:var(--fundo);color:var(--tinta);font:16px/1.65 "Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-a{color:var(--azul)}a:hover{color:var(--azul2)}
-.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
-.pular{position:absolute;left:-9999px}.pular:focus{left:16px;top:16px;background:#fff;padding:8px;z-index:9}
-.topo{background:#fff;border-bottom:1px solid var(--linha);position:sticky;top:0;z-index:5}
-.topo-in{display:flex;align-items:center;gap:20px;min-height:68px;flex-wrap:wrap}
-.marca{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--tinta);font-weight:700}
-.sigla{background:var(--tinta);color:#fff;font-family:Syne,sans-serif;padding:6px 9px;border-radius:8px;letter-spacing:.04em}
-.menu{display:flex;flex-wrap:wrap;gap:4px 16px;list-style:none;margin:0;padding:0;flex:1}
-.menu a{text-decoration:none;color:var(--suave);font-size:.92rem;font-weight:500}
-.menu a[aria-current]{color:var(--tinta);font-weight:700}
-.btn{display:inline-block;background:var(--azul);color:#fff;text-decoration:none;font-weight:600;padding:12px 20px;border-radius:10px;border:0;cursor:pointer;font:inherit;font-weight:600;margin:4px 6px 4px 0}
-.btn:hover{background:var(--azul2);color:#fff}.btn-sm{padding:9px 14px;font-size:.9rem}
-.btn-sec{background:transparent;color:var(--azul);box-shadow:inset 0 0 0 2px var(--azul)}.btn-sec:hover{background:var(--destaque);color:var(--azul2)}
-main{padding:24px 0 56px}
-.breadcrumb ol{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:0 0 18px;font-size:.88rem;color:var(--suave)}
-.breadcrumb li+li::before{content:"›";margin-right:6px}
-.cab h1{font-family:Syne,sans-serif;font-size:clamp(1.9rem,4.4vw,3rem);line-height:1.12;margin:.2em 0 .3em;letter-spacing:-.01em}
-.lead{font-size:1.15rem;color:var(--suave);max-width:46em}
-h2{font-family:Syne,sans-serif;font-size:1.55rem;line-height:1.25;margin:2.2em 0 .6em}
-h3{font-size:1.08rem;margin:.2em 0}
-.pagina>p,.pagina section>p,.pagina li{max-width:48em}
-.selos{display:flex;flex-wrap:wrap;gap:8px}.selos span{background:var(--destaque);color:var(--azul2);border-radius:99px;padding:4px 12px;font-size:.85rem;font-weight:600}
-.cards{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
-.card{background:var(--card);border:1px solid var(--linha);border-radius:14px;padding:20px}
-.card h2,.card h3{margin:.1em 0 .4em;font-size:1.12rem;font-family:"Plus Jakarta Sans",sans-serif}
-.card a{text-decoration:none}.card p{margin:0;color:var(--suave)}.tag{font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px!important}
-.pilares{display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:10px 24px}.pilares dt{font-weight:700}.pilares dd{margin:0;color:var(--suave)}
-@media(max-width:640px){.pilares{grid-template-columns:1fr}.pilares dd{margin-bottom:10px}}
-.lista-links li{margin:.4em 0}
-.passos li{margin:.6em 0}
-.faq details{background:#fff;border:1px solid var(--linha);border-radius:12px;padding:4px 18px;margin:10px 0}
-.faq summary{cursor:pointer;list-style:none;padding:10px 0}.faq summary::-webkit-details-marker{display:none}
-.faq summary h3{display:inline;font-size:1.02rem}.faq summary::after{content:"+";float:right;font-weight:700;color:var(--azul)}
-.faq details[open] summary::after{content:"–"}.resp p{margin-top:0;color:var(--suave)}
-.resumo{background:var(--destaque);border-left:4px solid var(--azul);border-radius:10px;padding:4px 20px;margin:20px 0}
-.resumo h2{font-size:1.05rem;margin:.8em 0 .2em;font-family:"Plus Jakarta Sans",sans-serif}
-.meta{color:var(--suave);font-size:.9rem}
-.tabela{overflow-x:auto;margin:12px 0}table{border-collapse:collapse;width:100%;min-width:620px;background:#fff;font-size:.93rem}
-caption{text-align:left;font-weight:600;padding:8px 0;color:var(--suave)}th,td{border:1px solid var(--linha);padding:9px 12px;text-align:right}
-thead th{background:var(--tinta);color:#fff;text-align:center}tbody th{text-align:left;background:#F1F5F9}
-.fontes{font-size:.92rem}.fontes ul{padding-left:20px}
-.cta{background:var(--tinta);color:#fff;border-radius:16px;padding:22px 26px;margin:40px 0 0}.cta .btn-sec{color:#fff;box-shadow:inset 0 0 0 2px #fff}.cta .btn-sec:hover{background:rgba(255,255,255,.1)}
-.sumario{background:#fff;border:1px solid var(--linha);border-radius:12px;padding:6px 20px}.sumario h2{font-size:1rem;margin:.8em 0 .2em;font-family:"Plus Jakarta Sans",sans-serif}
-.form{max-width:640px}.form label{display:block;font-weight:600;margin-bottom:4px}
-.form input,.form select,.form textarea{width:100%;padding:11px 12px;border:1px solid #CBD5E1;border-radius:10px;font:inherit;background:#fff}
-.form .check{font-weight:400}.form .check input{width:auto;margin-right:8px}.oculto{position:absolute;left:-9999px}
+body{margin:0;background:var(--fundo);color:var(--texto);font:16px/1.7 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto}
+a{color:var(--azul);text-underline-offset:3px}a:hover{color:var(--navy)}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+.pular{position:absolute;left:-9999px}.pular:focus{left:16px;top:16px;background:#fff;padding:8px 12px;z-index:99;border-radius:8px}
+:focus-visible{outline:3px solid var(--ouro);outline-offset:2px}
+
+/* topo */
+.topo{background:rgba(0,32,73,.96);backdrop-filter:saturate(140%) blur(10px);position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(236,176,44,.18)}
+.topo-in{display:flex;align-items:center;gap:24px;min-height:76px}
+.marca{display:flex;flex-shrink:0}.marca img{height:46px;width:auto;display:block}
+.menu{display:flex;flex-wrap:wrap;gap:2px 4px;list-style:none;margin:0;padding:0}
+#menu-principal{flex:1;display:flex;justify-content:flex-end}
+.menu a{display:block;text-decoration:none;color:#C9D6EA;font-size:.9rem;font-weight:500;padding:8px 10px;border-radius:8px;transition:color .2s,background .2s}
+.menu a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.menu a[aria-current]{color:var(--ouro);font-weight:600}
+.menu-btn{display:none;margin-left:auto;background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:10px;padding:8px 14px;font:inherit;font-weight:600;cursor:pointer}
+@media(max-width:1060px){
+ .menu-btn{display:block}.topo .topo-cta{display:none}
+ .js #menu-principal{display:none;flex-basis:100%}.js #menu-principal.aberto{display:block}
+ .topo-in{flex-wrap:wrap;padding:10px 20px}.menu{flex-direction:column;padding:6px 0 14px}
+ #menu-principal{flex-basis:100%}
+}
+
+/* botões */
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font:600 .97rem/1 Inter,sans-serif;padding:15px 22px;border-radius:12px;border:0;cursor:pointer;margin:4px 8px 4px 0;transition:transform .15s,box-shadow .2s,background .2s,color .2s}
+.btn-sm{padding:11px 16px;font-size:.88rem;margin:0}
+.btn-ouro{background:linear-gradient(180deg,var(--ouro2),var(--ouro));color:var(--navy);box-shadow:0 6px 20px -6px rgba(236,176,44,.6)}
+.btn-ouro:hover{color:var(--navy);transform:translateY(-1px);box-shadow:0 10px 26px -6px rgba(236,176,44,.75)}
+.btn-linha{background:rgba(255,255,255,.04);color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.35)}
+.btn-linha:hover{color:var(--navy);background:#fff}
+
+/* hero */
+.hero{position:relative;overflow:hidden;background:radial-gradient(1100px 500px at 85% -10%,rgba(29,95,168,.55),transparent 60%),radial-gradient(700px 400px at 0% 120%,rgba(236,176,44,.14),transparent 60%),linear-gradient(180deg,var(--navy),var(--navy2));color:#fff;padding:42px 0 54px}
+.hero-grade{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:44px 44px;-webkit-mask-image:radial-gradient(ellipse at 70% 30%,#000 20%,transparent 75%);mask-image:radial-gradient(ellipse at 70% 30%,#000 20%,transparent 75%);pointer-events:none}
+.hero-in{position:relative;display:grid;grid-template-columns:1fr;gap:40px;align-items:center}
+.hero h1{font-family:Montserrat,sans-serif;font-weight:800;font-size:clamp(1.85rem,4.2vw,3rem);line-height:1.12;letter-spacing:-.02em;margin:.2em 0 .35em;max-width:20em}
+.hero .lead{font-size:1.14rem;color:#C9D6EA;max-width:40em;margin:0 0 8px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font:500 .78rem/1 "JetBrains Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ouro);background:rgba(236,176,44,.1);border:1px solid rgba(236,176,44,.35);padding:8px 12px;border-radius:99px;margin:6px 0 10px}
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ouro);box-shadow:0 0 0 4px rgba(236,176,44,.25);animation:pulsa 2.2s infinite}
+@keyframes pulsa{50%{box-shadow:0 0 0 8px rgba(236,176,44,0)}}
+.hero-home{padding:64px 0 84px}
+.hero-home .hero-in{grid-template-columns:1.15fr .85fr}
+.hero-home h1{font-size:clamp(2.1rem,5vw,3.6rem)}
+.hero-ctas{margin:26px 0 10px}.hero-meta{font:500 .8rem/1.5 "JetBrains Mono",monospace;color:#8FA3C0;margin:6px 0 0}
+@media(max-width:900px){.hero-home .hero-in{grid-template-columns:1fr}.hero-home{padding:44px 0 56px}}
+@media(max-width:560px){.eyebrow{font-size:.68rem;letter-spacing:.03em}.hero-ctas .btn{width:100%;justify-content:center;margin-right:0}.marca img{height:40px}}
+.breadcrumb ol{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:0 0 14px;font-size:.84rem;color:#8FA3C0}
+.breadcrumb a{color:#C9D6EA;text-decoration:none}.breadcrumb a:hover{color:var(--ouro)}
+.breadcrumb li+li::before{content:"/";margin-right:6px;color:#5C7395}
+
+/* painel ilustrativo */
+.painel{margin:0;background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:18px;box-shadow:0 30px 80px -30px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08);backdrop-filter:blur(6px)}
+.painel-top{display:flex;align-items:center;gap:6px;font:500 .78rem "JetBrains Mono",monospace;color:#AFC0D8;margin-bottom:14px}
+.painel-top span{width:9px;height:9px;border-radius:50%;background:#2E4A73}.painel-top span:first-child{background:var(--ouro)}
+.painel-top b{font-weight:500;margin-left:8px}
+.painel-graf{position:relative;height:170px;display:flex;align-items:flex-end;gap:14%;padding:0 6% 0 8%;background:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px) 0 0/100% 34px;border-radius:12px;border:1px solid rgba(255,255,255,.08)}
+.painel-graf i{flex:1;height:var(--h);background:linear-gradient(180deg,var(--ouro2),var(--ouro-esc));border-radius:5px 5px 0 0;transform-origin:bottom;animation:cresce 1.1s cubic-bezier(.2,.8,.2,1) both}
+.painel-graf i:nth-child(2){animation-delay:.12s}.painel-graf i:nth-child(3){animation-delay:.24s}.painel-graf i:nth-child(4){animation-delay:.36s}
+.painel-graf svg{position:absolute;inset:8px 10px 18px;width:calc(100% - 20px);height:calc(100% - 26px)}
+.painel-graf svg path:first-child{stroke-dasharray:260;stroke-dashoffset:260;animation:traca 1.4s .5s ease-out forwards}
+@keyframes cresce{from{transform:scaleY(0)}}@keyframes traca{to{stroke-dashoffset:0}}
+.painel-lista{list-style:none;padding:0;margin:16px 0 6px;display:grid;gap:8px}
+.painel-lista li{display:flex;align-items:center;gap:10px;font-size:.9rem;color:#E4ECF7;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:9px 12px}
+.painel-lista em{margin-left:auto;font:500 .74rem "JetBrains Mono",monospace;font-style:normal;color:#8FD6A8}
+.dot{width:8px;height:8px;border-radius:50%}.dot.ok{background:#3DDC84;box-shadow:0 0 10px #3DDC84}.dot.ouro{background:var(--ouro);box-shadow:0 0 10px var(--ouro)}
+.painel figcaption{font-size:.74rem;color:#7F93B2;margin-top:8px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.painel-graf svg path:first-child{stroke-dashoffset:0}}
+
+/* corpo */
+.corpo{padding:48px 20px 72px}
+.corpo>p,.corpo section>p,.corpo li{max-width:52em}
+h2{font-family:Montserrat,sans-serif;font-weight:700;font-size:clamp(1.4rem,2.6vw,1.9rem);line-height:1.25;letter-spacing:-.01em;margin:2.4em 0 .7em;color:var(--navy)}
+.corpo>section:first-child h2,.corpo>h2:first-child{margin-top:.4em}
+h2::after{content:"";display:block;width:44px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--ouro),var(--ouro2));margin-top:12px}
+h3{font-size:1.06rem;margin:.2em 0;color:var(--navy)}
+.intro{font-size:1.08rem}
+.stack{list-style:none;padding:0;margin:22px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.stack li{font:500 .8rem "JetBrains Mono",monospace;color:var(--navy3);background:#fff;border:1px solid var(--linha);border-radius:8px;padding:7px 11px}
+
+.cards{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px;margin:0}
+.card{position:relative;background:var(--card);border:1px solid var(--linha);border-radius:var(--raio);padding:24px;box-shadow:var(--sombra);transition:transform .2s,box-shadow .2s,border-color .2s}
+.card:hover{transform:translateY(-3px);border-color:rgba(236,176,44,.6);box-shadow:0 2px 4px rgba(0,32,73,.06),0 18px 40px -10px rgba(0,32,73,.22)}
+.card h2,.card h3{margin:.2em 0 .45em;font-size:1.1rem;font-family:Montserrat,sans-serif;font-weight:700}
+.card h2::after{display:none}
+.card a{text-decoration:none;color:var(--navy)}.card a::after{content:"";position:absolute;inset:0;border-radius:var(--raio)}
+.card p{margin:0;color:var(--suave);font-size:.95rem}
+.ico{display:inline-grid;place-items:center;width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--navy),var(--navy3));color:var(--ouro);margin-bottom:10px;box-shadow:inset 0 0 0 1px rgba(236,176,44,.3)}
+.tag{font:500 .74rem "JetBrains Mono",monospace!important;text-transform:uppercase;letter-spacing:.06em;color:var(--ouro-esc)!important;margin-bottom:8px!important}
+
+.faixa{position:relative;background:linear-gradient(180deg,var(--navy),var(--navy2));color:#E4ECF7;border-radius:24px;padding:8px 32px 34px;margin:56px 0;overflow:hidden}
+.faixa h2{color:#fff}
+.faixa::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:36px 36px;pointer-events:none}
+.faixa a{color:var(--ouro2)}
+.pilares{display:grid;grid-template-columns:minmax(150px,230px) 1fr;gap:12px 28px;position:relative}
+.pilares dt{font-weight:700;color:var(--navy)}.pilares dd{margin:0;color:var(--suave)}
+.pilares-4{grid-template-columns:repeat(4,1fr);gap:16px}
+.pilares-4 dt{color:var(--ouro);font:600 .8rem "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.08em;padding-top:16px;border-top:1px solid rgba(236,176,44,.4)}
+.pilares-4 dd{color:#C9D6EA;font-size:.95rem;grid-row:2}
+@media(max-width:860px){.pilares-4{grid-template-columns:1fr 1fr}.pilares-4 dd{grid-row:auto}}
+@media(max-width:640px){.pilares,.pilares-4{grid-template-columns:1fr}.pilares dd{margin-bottom:10px}.faixa{padding:4px 20px 26px}}
+
+.lista-links{padding:0;list-style:none;display:grid;gap:10px}
+.lista-links li{background:#fff;border:1px solid var(--linha);border-left:3px solid var(--ouro);border-radius:12px;padding:14px 18px}
+.lista-links a{font-weight:600;color:var(--navy)}
+.passos{counter-reset:p;list-style:none;padding:0;display:grid;gap:12px}
+.passos li{counter-increment:p;position:relative;background:#fff;border:1px solid var(--linha);border-radius:14px;padding:16px 18px 16px 64px}
+.passos li::before{content:counter(p,decimal-leading-zero);position:absolute;left:16px;top:15px;font:600 .9rem "JetBrains Mono",monospace;color:var(--ouro);background:var(--navy);border-radius:8px;padding:4px 7px}
+
+.faq details{background:#fff;border:1px solid var(--linha);border-radius:14px;padding:4px 20px;margin:10px 0;transition:border-color .2s}
+.faq details[open]{border-color:rgba(236,176,44,.7);box-shadow:var(--sombra)}
+.faq summary{cursor:pointer;list-style:none;padding:12px 28px 12px 0;position:relative}.faq summary::-webkit-details-marker{display:none}
+.faq summary h3{display:inline;font-size:1rem}
+.faq summary::after{content:"+";position:absolute;right:0;top:9px;font:600 1.3rem/1 Inter;color:var(--ouro-esc)}
+.faq details[open] summary::after{content:"−"}.resp p{margin-top:0;color:var(--suave)}
+
+.resumo{background:linear-gradient(135deg,#fff,var(--gelo));border:1px solid var(--linha);border-left:4px solid var(--ouro);border-radius:14px;padding:6px 22px;margin:24px 0}
+.resumo h2{font-size:.82rem;margin:1em 0 .2em;font:600 .78rem "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--ouro-esc)}
+.resumo h2::after{display:none}
+.meta{color:var(--suave);font-size:.88rem;font-family:"JetBrains Mono",monospace}
+.tabela{overflow-x:auto;margin:14px 0;border-radius:14px;border:1px solid var(--linha);box-shadow:var(--sombra)}
+table{border-collapse:collapse;width:100%;min-width:640px;background:#fff;font-size:.92rem}
+caption{text-align:left;font-weight:600;padding:12px 14px;color:var(--suave);background:#fff}
+th,td{border-top:1px solid var(--linha);padding:10px 14px;text-align:right;font-variant-numeric:tabular-nums}
+thead th{background:var(--navy);color:#fff;text-align:center;font-weight:600;border:0}
+tbody th{text-align:left;background:#F3F6FB;color:var(--navy)}
+tbody tr:hover td{background:#FFFBF0}
+.fontes{font-size:.9rem;color:var(--suave)}.fontes ul{padding-left:20px}
+.relacionados ul{padding-left:20px}
+.cta{position:relative;overflow:hidden;background:radial-gradient(600px 240px at 100% 0,rgba(236,176,44,.22),transparent 60%),linear-gradient(135deg,var(--navy),var(--navy3));color:#fff;border-radius:24px;padding:30px 34px;margin:56px 0 0}
+.cta p{max-width:none;margin:.3em 0}.cta strong{font-family:Montserrat,sans-serif;font-size:1.25rem}
+.sumario{background:#fff;border:1px solid var(--linha);border-radius:14px;padding:8px 22px}
+.sumario h2{font:600 .78rem "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.08em;margin:1em 0 .2em;color:var(--ouro-esc)}.sumario h2::after{display:none}
+.form{max-width:680px;background:#fff;border:1px solid var(--linha);border-radius:20px;padding:26px 28px;box-shadow:var(--sombra)}
+.form label{display:block;font-weight:600;margin-bottom:6px;color:var(--navy);font-size:.94rem}
+.form input,.form select,.form textarea{width:100%;padding:12px 14px;border:1px solid #CCD6E4;border-radius:10px;font:inherit;background:#FBFCFE;transition:border-color .2s,box-shadow .2s}
+.form input:focus,.form select:focus,.form textarea:focus{outline:0;border-color:var(--ouro);box-shadow:0 0 0 4px rgba(236,176,44,.2)}
+.form .check{font-weight:400;color:var(--suave)}.form .check input{width:auto;margin-right:8px}.oculto{position:absolute;left:-9999px}
 address{font-style:normal}
-.rodape{background:var(--tinta);color:#CBD5E1;padding:40px 0 24px;font-size:.93rem}
-.rodape a{color:#fff}.rodape h2{color:#fff;font-size:1.05rem;margin:0 0 .6em;font-family:"Plus Jakarta Sans",sans-serif}
-.rod-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px}.rodape ul{list-style:none;padding:0;margin:0}.rodape li{margin:.3em 0}
-.legal{margin-top:28px;font-size:.82rem;color:#94A3B8}
+.contato{background:#fff;border:1px solid var(--linha);border-radius:18px;padding:12px 26px;box-shadow:var(--sombra);max-width:620px}
+
+/* revelar ao rolar (só com JS) */
+.js .revela{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.js .revela.visivel{opacity:1;transform:none}
+
+/* rodapé */
+.rodape{background:linear-gradient(180deg,var(--navy),#00142E);color:#AFC0D8;padding:56px 0 28px;font-size:.92rem;border-top:3px solid var(--ouro)}
+.rodape a{color:#E4ECF7;text-decoration:none}.rodape a:hover{color:var(--ouro)}
+.rodape h2{color:#fff;font:600 .8rem "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.08em;margin:0 0 1em}.rodape h2::after{display:none}
+.rod-logo img{height:58px;width:auto}
+.rod-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:36px}
+@media(max-width:820px){.rod-grid{grid-template-columns:1fr}}
+.rodape ul{list-style:none;padding:0;margin:0}.rodape li{margin:.45em 0}
+.legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);font-size:.8rem;color:#6F84A5}
+.zap{position:fixed;right:18px;bottom:18px;z-index:60;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:#25D366;color:#fff;box-shadow:0 10px 26px -6px rgba(37,211,102,.7);transition:transform .2s}
+.zap:hover{transform:scale(1.07);color:#fff}
 """
 
 ARTIGOS_IDX = []
