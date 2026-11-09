@@ -39,6 +39,7 @@ FONTES = {
     "lc123": ("Lei Complementar nº 123/2006 (Simples Nacional) — Planalto", "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm"),
     "l9249": ("Lei nº 9.249/1995 (percentuais de presunção) — Planalto", "https://www.planalto.gov.br/ccivil_03/leis/l9249.htm"),
     "l9718": ("Lei nº 9.718/1998 (PIS/Cofins cumulativos) — Planalto", "https://www.planalto.gov.br/ccivil_03/leis/l9718compilada.htm"),
+    "ctn": ("Código Tributário Nacional, art. 168 (prazo de 5 anos para restituição) — Planalto", "https://www.planalto.gov.br/ccivil_03/leis/l5172compilado.htm"),
     "lc116": ("Lei Complementar nº 116/2003 (ISS) — Planalto", "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm"),
     "lc214": ("Lei Complementar nº 214/2025 (IBS e CBS) — Planalto", "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214.htm"),
     "lc224": ("Lei Complementar nº 224/2025 — Planalto", "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp224.htm"),
@@ -71,7 +72,7 @@ def org_schema():
         "image": SITE + "/assets/og-image.jpg",
         "taxID": CNPJ,
         "foundingDate": FUNDACAO,
-        "description": "Escritório de contabilidade em Manaus/AM: contabilidade empresarial, fiscal e tributário, departamento pessoal, consultoria e auditoria contábil e tributária, com atendimento 100% digital para empresas de Manaus e de todo o Brasil.",
+        "description": "Escritório de contabilidade em Manaus/AM: contabilidade empresarial, fiscal e tributário, departamento pessoal, BPO financeiro, recuperação de créditos de PIS e COFINS, consultoria e auditoria contábil e tributária, com atendimento 100% digital para empresas de Manaus e de todo o Brasil.",
         "telephone": TEL1_INTL,
         "email": EMAIL,
         "address": {"@type": "PostalAddress", "streetAddress": f"{ENDERECO['rua']}, {ENDERECO['bairro']}",
@@ -85,7 +86,7 @@ def org_schema():
                        {"@type": "Country", "name": "Brasil"}],
         "knowsAbout": ["Contabilidade empresarial", "Simples Nacional", "Lucro Presumido", "Lucro Real",
                        "Planejamento tributário", "Zona Franca de Manaus", "ICMS-AM", "ISS Manaus",
-                       "Departamento pessoal", "eSocial", "Auditoria contábil", "Auditoria tributária",
+                       "Departamento pessoal", "eSocial", "BPO financeiro", "Contas a pagar e a receber", "Fluxo de caixa", "Recuperação de créditos de PIS e COFINS", "Produtos monofásicos", "PER/DCOMP", "Auditoria contábil", "Auditoria tributária",
                        "Abertura de empresas", "Troca de contador", "Reforma tributária IBS e CBS"],
         "contactPoint": [{"@type": "ContactPoint", "telephone": TEL1_INTL, "contactType": "customer service",
                           "areaServed": "BR", "availableLanguage": "Portuguese"},
@@ -342,6 +343,8 @@ def build():
         ("Fiscal e inteligência tributária", "Apuração no Simples Nacional, Lucro Presumido e Lucro Real, obrigações acessórias e planejamento tributário, incluindo ICMS-AM, ZFM e ISS Manaus.", "/servicos/#fiscal"),
         ("Departamento pessoal", "Folha, pró-labore, admissões e rescisões com eSocial, DCTFWeb e FGTS Digital.", "/servicos/#departamento-pessoal"),
         ("Consultoria contábil, tributária e financeira", "Plano de contas, centros de custo, fluxo de caixa, separação entre pessoa física e jurídica e reenquadramento tributário.", "/servicos/#consultoria"),
+        ("BPO financeiro", "Terceirização da rotina financeira: contas a pagar e a receber, conciliação bancária, emissão de cobranças e notas, e fluxo de caixa integrado à contabilidade.", "/servicos/#bpo-financeiro"),
+        ("Recuperação de créditos de PIS e COFINS", "Revisão dos últimos 5 anos para identificar PIS e COFINS pagos a mais, como produtos monofásicos no Simples, ICMS na base de cálculo e créditos de insumos, e recuperação por compensação ou restituição.", "/servicos/#recuperacao-pis-cofins"),
         ("Auditoria contábil e tributária", "Exame de demonstrações, revisão preventiva de apurações dos últimos 5 anos e cruzamento SPED × NF-e × bancos.", "/servicos/#auditoria"),
     ]
     ICONES = [
@@ -349,11 +352,13 @@ def build():
         '<path d="M7 3h7l5 5v13H7zM14 3v5h5M10 13h6M10 17h6"/>',
         '<path d="M16 19v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1M9.5 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6M21 19v-1a4 4 0 0 0-3-3.9M16 4.1a3 3 0 0 1 0 5.8"/>',
         '<path d="M12 3v3m0 12v3M3 12h3m12 0h3M6 6l2 2m8 8 2 2M6 18l2-2m8-8 2-2"/><circle cx="12" cy="12" r="3"/>',
+        '<path d="M3 7h15a3 3 0 0 1 3 3v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM3 7l12-3 1 3M17 13.5h.01"/>',
+        '<path d="M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5M12 7.5v9M14.5 9.5c0-1.1-1.1-2-2.5-2s-2.5.9-2.5 2 1.1 1.7 2.5 2 2.5.9 2.5 2-1.1 2-2.5 2-2.5-.9-2.5-2"/>',
         '<path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zm9 16-4-4M8.5 11l2 2 3.5-4"/>',
     ]
     cards = "".join(f'<li class="card card-serv"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">{ICONES[i]}</svg></span><h3><a href="{u}">{e(t)}</a></h3><p>{e(d)}</p></li>' for i, (t, d, u) in enumerate(servicos_resumo))
     home_faq = [
-        ("O que a A M Consultoria faz?", f"A {NOME} é um escritório de contabilidade em Manaus/AM (CNPJ {CNPJ}) que oferece contabilidade empresarial, fiscal e tributário, departamento pessoal, consultoria e auditoria contábil e tributária, com atendimento 100% digital pelo Portal do Cliente."),
+        ("O que a A M Consultoria faz?", f"A {NOME} é um escritório de contabilidade em Manaus/AM (CNPJ {CNPJ}) que oferece contabilidade empresarial, fiscal e tributário, departamento pessoal, BPO financeiro, recuperação de créditos de PIS e COFINS, consultoria e auditoria contábil e tributária, com atendimento 100% digital pelo Portal do Cliente."),
         ("A A M atende empresas fora de Manaus?", "Sim. O atendimento e o fluxo de documentos são digitais, então a A M atende empresas de Manaus, do interior do Amazonas e de outros estados."),
         ("A A M atende MEI?", "Não. O escritório atende micro, pequenas e médias empresas enquadradas no Simples Nacional, Lucro Presumido ou Lucro Real. Quem é MEI e está perto de ultrapassar o limite pode procurar a A M para planejar a migração para ME."),
         ("Onde fica o escritório?", f"{ENDERECO['rua']}, bairro {ENDERECO['bairro']}, {ENDERECO['cidade']}/{ENDERECO['uf']}, CEP {ENDERECO['cep']}. Atendimento {HORARIO.lower()}."),
@@ -410,7 +415,7 @@ def build():
   <figcaption>Ilustração. Guias, relatórios e certidões ficam no Portal do Cliente, 24 horas.</figcaption>
  </figure>"""
     page("/", f"Contabilidade em Manaus/AM | A M Consultoria Contábil",
-         "Escritório de contabilidade em Manaus/AM: contabilidade, impostos, folha, consultoria e auditoria para o Simples, Presumido e Real. Atendimento 100% digital.",
+         "Contabilidade digital em Manaus/AM: impostos, folha, BPO financeiro, recuperação de PIS e COFINS, consultoria e auditoria. Atendimento 100% digital.",
          body, "Escritório de Contabilidade Digital: um investimento para sua empresa",
          extra_schema=[faq_schema(home_faq)], priority="1.0", freq="weekly", hero_ctas=hero_ctas, hero_extra=painel,
          lead="Contabilidade, impostos e folha de pagamento com tecnologia e atendimento consultivo, em Manaus/AM e em todo o Brasil.")
@@ -446,6 +451,23 @@ def build():
           "Análise de fluxo de caixa, capital de giro e ponto de equilíbrio",
           "Separação patrimonial entre pessoa física e jurídica",
           "Estudo de enquadramento e reenquadramento tributário"]),
+        ("bpo-financeiro", "BPO financeiro",
+         "Terceirizamos a rotina do seu financeiro para que os sócios cuidem do negócio. Como a mesma equipe faz a contabilidade, os lançamentos já chegam conciliados e os relatórios saem mais rápido e com menos erro.",
+         ["Contas a pagar: agendamento e controle de vencimentos, com aprovação dos pagamentos pelo cliente",
+          "Contas a receber: emissão de boletos e cobranças, baixa de recebimentos e controle de inadimplência",
+          "Conciliação bancária e de cartões",
+          "Emissão de notas fiscais de serviço e de venda",
+          "Fluxo de caixa realizado e projetado",
+          "Relatórios gerenciais mensais: DRE gerencial, contas por centro de custo e indicadores",
+          "Organização e guarda digital de comprovantes no Portal do Cliente"]),
+        ("recuperacao-pis-cofins", "Recuperação de créditos de PIS e COFINS",
+         "Revisamos as apurações dos últimos 5 anos, prazo previsto no Código Tributário Nacional, para identificar PIS e COFINS recolhidos a mais e recuperar os valores por compensação com outros tributos federais ou por restituição.",
+         ["Empresas do Simples Nacional: segregação de receitas de produtos monofásicos (como medicamentos, cosméticos, autopeças e bebidas), que não deveriam ter PIS e COFINS no DAS",
+          "Exclusão do ICMS da base de cálculo do PIS e da COFINS (Tema 69 do STF)",
+          "Lucro Real: revisão de créditos sobre insumos pelos critérios de essencialidade e relevância (Tema 779 do STJ)",
+          "Revisão de retenções, alíquotas, NCM e CST nas notas fiscais",
+          "Retificação de EFD-Contribuições, DCTF e PGDAS-D e pedidos por PER/DCOMP",
+          "Relatório com memória de cálculo e análise de risco antes de qualquer compensação"]),
         ("auditoria", "Auditoria contábil e tributária",
          "Exame técnico de demonstrações contábeis, apurações fiscais e controles internos para encontrar inconsistências, passivos ocultos ou créditos não aproveitados.",
          ["Auditoria de balanços e demonstrações financeiras",
@@ -464,14 +486,18 @@ def build():
          "serviceType": t}} for n, (i, t, d, _) in enumerate(serv)]}
     serv_faq = [
         ("Quais serviços estão incluídos na contabilidade mensal?", "Depende do escopo contratado. Normalmente inclui escrituração contábil, apuração de tributos, entrega de obrigações acessórias e, quando há funcionários, folha de pagamento. Consultoria e auditoria são contratadas à parte."),
+        ("O que é BPO financeiro?", "BPO financeiro (Business Process Outsourcing) é a terceirização da rotina financeira da empresa: contas a pagar e a receber, conciliação bancária, emissão de cobranças e notas e fluxo de caixa. Os pagamentos continuam sendo aprovados pelos sócios; a A M executa e controla a rotina e entrega relatórios."),
+        ("Preciso contratar a contabilidade para ter o BPO financeiro?", "Não é obrigatório, mas a combinação traz mais ganho: com contabilidade e financeiro na mesma equipe, os lançamentos já chegam conciliados e o fechamento mensal fica mais rápido."),
+        ("Como funciona a recuperação de créditos de PIS e COFINS?", "Analisamos as notas fiscais e as apurações dos últimos 5 anos, calculamos os valores pagos a mais e, se houver crédito, retificamos as declarações e pedimos a compensação ou restituição à Receita Federal por PER/DCOMP. Antes de compensar, você recebe um relatório com os valores e os riscos de cada tese."),
+        ("Empresa do Simples Nacional pode recuperar PIS e COFINS?", "Sim, quando vende produtos sujeitos à tributação monofásica (por exemplo, medicamentos, cosméticos, autopeças e bebidas) e essas receitas não foram segregadas no PGDAS-D. Nesse caso, PIS e COFINS foram cobrados dentro do DAS sem necessidade."),
         ("A A M trabalha com empresas da Zona Franca de Manaus?", "Sim. Acompanhamos apuração de ICMS-AM e as particularidades fiscais de empresas instaladas na Zona Franca de Manaus, além do ISS do município."),
     ]
     page("/servicos/", f"Serviços de contabilidade em Manaus | A M Consultoria",
-         "Contabilidade empresarial, fiscal e tributário, departamento pessoal, consultoria e auditoria em Manaus/AM. Veja o escopo de cada serviço e peça orçamento.",
-         f'<nav class="sumario" aria-label="Nesta página"><h2>Nesta página</h2><ol>{toc}</ol></nav>{secs}{faq_block(serv_faq)}{cta()}',
+         "Contabilidade, fiscal, departamento pessoal, BPO financeiro, recuperação de PIS e COFINS, consultoria e auditoria em Manaus/AM. Veja cada serviço.",
+         f'<nav class="sumario" aria-label="Nesta página"><h2>Nesta página</h2><ol>{toc}</ol></nav>{secs}{faq_block(serv_faq)}{fontes_html(["ctn", "lc123", "l9718", "esocial"])}{cta()}',
          "Serviços de contabilidade para empresas em Manaus e no Brasil",
          extra_schema=[serv_schema, faq_schema(serv_faq)], priority="0.9", freq="monthly",
-         lead="Cinco áreas integradas em um único parceiro contábil.")
+         lead="Contabilidade, impostos, folha, financeiro e recuperação de tributos em um único parceiro.")
 
     # ---------- ESPECIALIDADES
     esp = [
@@ -579,7 +605,7 @@ def build():
                    f"<p>Os conteúdos do site são produzidos e revisados pela equipe técnica de contadores da A M, que atende diariamente empresas do Simples Nacional, Lucro Presumido e Lucro Real.</p>")
     body = f"""
 <section aria-labelledby="h-quem"><h2 id="h-quem">Quem somos</h2>
-<p>A <strong>{e(RAZAO)}</strong> (CNPJ {CNPJ}), fundada em {data_br(FUNDACAO)}, é um escritório de contabilidade com sede em Manaus/AM. Atuamos em contabilidade, fiscal e tributário, departamento pessoal, consultoria e auditoria, com processos digitais e atendimento próximo dos sócios.</p></section>
+<p>A <strong>{e(RAZAO)}</strong> (CNPJ {CNPJ}), fundada em {data_br(FUNDACAO)}, é um escritório de contabilidade com sede em Manaus/AM. Atuamos em contabilidade, fiscal e tributário, departamento pessoal, BPO financeiro, recuperação de créditos de PIS e COFINS, consultoria e auditoria, com processos digitais e atendimento próximo dos sócios.</p></section>
 <section aria-labelledby="h-atuacao"><h2 id="h-atuacao">Onde atuamos</h2>
 <p>Atendemos empresas em Manaus, no interior do Amazonas e em outros estados. Conhecemos as particularidades da Zona Franca de Manaus, do ICMS-AM e do ISS de Manaus, além dos regimes federais.</p></section>
 <section id="equipe" aria-labelledby="h-equipe"><h2 id="h-equipe">Equipe e responsabilidade técnica</h2>{autor_bloco}</section>
@@ -611,7 +637,7 @@ def build():
 
     # ---------- ORÇAMENTO (Netlify Forms)
     opts_reg = "".join(f"<option>{x}</option>" for x in ["Simples Nacional", "Lucro Presumido", "Lucro Real", "Não sei informar", "Empresa nova (em abertura)"])
-    opts_srv = "".join(f"<option>{x}</option>" for x in ["Contabilidade mensal", "Fiscal e tributário", "Departamento pessoal", "Consultoria contábil/financeira", "Auditoria contábil e tributária", "Troca de contador", "Abertura de empresa", "Outro"])
+    opts_srv = "".join(f"<option>{x}</option>" for x in ["Contabilidade mensal", "Fiscal e tributário", "Departamento pessoal", "BPO financeiro", "Recuperação de créditos de PIS e COFINS", "Consultoria contábil/financeira", "Auditoria contábil e tributária", "Troca de contador", "Abertura de empresa", "Outro"])
     body = f"""
 <form class="form" name="orcamento" method="POST" action="/obrigado/" data-netlify="true" netlify-honeypot="campo-extra">
 <input type="hidden" name="form-name" value="orcamento">
@@ -787,7 +813,7 @@ def build():
 
     # ---------- FAQ GERAL
     faq_geral = [
-        ("O que faz a A M Consultoria e Auditoria Contábil?", f"É um escritório de contabilidade em Manaus/AM (CNPJ {CNPJ}) que presta serviços de contabilidade empresarial, fiscal e tributário, departamento pessoal, consultoria e auditoria contábil e tributária, com atendimento digital para empresas de todo o Brasil."),
+        ("O que faz a A M Consultoria e Auditoria Contábil?", f"É um escritório de contabilidade em Manaus/AM (CNPJ {CNPJ}) que presta serviços de contabilidade empresarial, fiscal e tributário, departamento pessoal, BPO financeiro, recuperação de créditos de PIS e COFINS, consultoria e auditoria contábil e tributária, com atendimento digital para empresas de todo o Brasil."),
         ("Quanto custa um contador em Manaus?", "Os honorários variam conforme o regime tributário, o número de notas fiscais, o número de funcionários e os serviços contratados. A A M envia uma proposta após um diagnóstico inicial gratuito. <a href=\"/orcamento/\">Solicite aqui</a>."),
         ("A A M atende MEI?", "Não. A A M atende microempresas e empresas de pequeno e médio porte no Simples Nacional, Lucro Presumido e Lucro Real."),
         ("A A M atende empresas de outros estados?", "Sim. Documentos, guias e relatórios circulam pelo Portal do Cliente e o atendimento é feito por WhatsApp, e-mail e videochamada."),
@@ -799,6 +825,8 @@ def build():
         ("Dividendos continuam isentos em 2026?", "Parcialmente. Desde janeiro de 2026, há retenção de 10% de imposto de renda quando uma empresa paga mais de R$ 50 mil no mês à mesma pessoa física, calculada sobre o total pago (Lei 15.270/2025)."),
         ("O Lucro Presumido ficou mais caro em 2026?", "Só para quem fatura mais de R$ 5 milhões por ano: a LC 224/2025 aumentou em 10% os percentuais de presunção sobre a parcela da receita acima desse valor. A regra é questionada judicialmente."),
         ("O que muda com o IBS e a CBS?", "Em 2026 há uma fase de teste (CBS de 0,9% e IBS de 0,1%) para empresas do regime regular, sem recolhimento efetivo para quem cumpre as obrigações acessórias. Empresas do Simples não participam do teste em 2026."),
+        ("A A M faz BPO financeiro?", "Sim. A A M assume a rotina financeira da empresa: contas a pagar e a receber, conciliação bancária, emissão de cobranças e notas e fluxo de caixa, com relatórios mensais. Os pagamentos continuam aprovados pelos sócios. Veja o <a href=\"/servicos/#bpo-financeiro\">escopo do BPO financeiro</a>."),
+        ("É possível recuperar PIS e COFINS pagos a mais?", "Sim, dentro do prazo de 5 anos. Os casos mais comuns são produtos monofásicos não segregados no Simples Nacional, a exclusão do ICMS da base de cálculo (Tema 69 do STF) e créditos de insumos no Lucro Real. Veja como funciona a <a href=\"/servicos/#recuperacao-pis-cofins\">recuperação de créditos de PIS e COFINS</a>."),
         ("A A M atende empresas da Zona Franca de Manaus?", "Sim. Acompanhamos ICMS-AM, incentivos e obrigações próprias de empresas instaladas na Zona Franca de Manaus."),
         ("O que é o Portal do Cliente?", "É a plataforma Onvio (Domínio/Thomson Reuters) onde o cliente acessa guias, balancetes, DRE, certidões, folha e documentos 24 horas por dia."),
         ("Preciso ir ao escritório?", f"Não. Todo o atendimento pode ser digital. Se preferir, o escritório fica na {ENDERECO['rua']}, {ENDERECO['bairro']}, Manaus/AM, {HORARIO.lower()}."),
@@ -806,7 +834,7 @@ def build():
     ]
     page("/faq/", "Perguntas frequentes sobre contabilidade | A M Consultoria",
          "Respostas sobre honorários, troca de contador, abertura de empresa, Simples × Presumido, Fator R, dividendos em 2026, IBS/CBS e atendimento da A M em Manaus.",
-         faq_block(faq_geral, "Perguntas e respostas", "faq-geral") + fontes_html(["lc123", "l15270", "lc224", "lc214", "cfc", "jucea"]) + cta("Não encontrou sua dúvida?"),
+         faq_block(faq_geral, "Perguntas e respostas", "faq-geral") + fontes_html(["lc123", "ctn", "l15270", "lc224", "lc214", "cfc", "jucea"]) + cta("Não encontrou sua dúvida?"),
          "Perguntas frequentes sobre contabilidade", ptype="FAQPage", extra_schema=[], priority="0.9",
          lead="Respostas diretas às dúvidas mais comuns de empresários sobre contabilidade e impostos.")
     # FAQPage: a própria WebPage já é FAQPage; adiciona mainEntity
@@ -851,7 +879,7 @@ def build():
     # ---------- llms.txt
     llms = f"""# {NOME}
 
-> Escritório de contabilidade em Manaus/AM (Brasil), {RAZAO}, CNPJ {CNPJ}, fundado em {FUNDACAO}. Presta contabilidade empresarial, fiscal e tributário, departamento pessoal, consultoria e auditoria contábil e tributária para micro, pequenas e médias empresas no Simples Nacional, Lucro Presumido e Lucro Real, com atendimento 100% digital em Manaus e em todo o Brasil. Não atende MEI.
+> Escritório de contabilidade em Manaus/AM (Brasil), {RAZAO}, CNPJ {CNPJ}, fundado em {FUNDACAO}. Presta contabilidade empresarial, fiscal e tributário, departamento pessoal, BPO financeiro, recuperação de créditos de PIS e COFINS, consultoria e auditoria contábil e tributária para micro, pequenas e médias empresas no Simples Nacional, Lucro Presumido e Lucro Real, com atendimento 100% digital em Manaus e em todo o Brasil. Não atende MEI.
 
 - Endereço: {ENDERECO['rua']}, {ENDERECO['bairro']}, Manaus/AM, CEP {ENDERECO['cep']}
 - WhatsApp: {TEL1_TXT} e {TEL2_TXT} · E-mail: {EMAIL}
@@ -859,10 +887,10 @@ def build():
 - Instagram: {INSTAGRAM}
 
 ## Páginas principais
-- [Serviços]({SITE}/servicos/): escopo de contabilidade, fiscal, departamento pessoal, consultoria e auditoria
+- [Serviços]({SITE}/servicos/): escopo de contabilidade, fiscal, departamento pessoal, BPO financeiro, recuperação de créditos de PIS e COFINS, consultoria e auditoria
 - [Trocar de contador]({SITE}/trocar-contador/): passo a passo da transição
 - [Abrir empresa em Manaus]({SITE}/abrir-empresa/): etapas, JUCEA, inscrições e regime tributário
-- [Perguntas frequentes]({SITE}/faq/): 16 respostas diretas
+- [Perguntas frequentes]({SITE}/faq/): 18 respostas diretas
 - [Sobre]({SITE}/sobre/): dados da empresa e equipe
 - [Contato]({SITE}/contato/)
 
@@ -989,7 +1017,7 @@ h3{font-size:1.06rem;margin:.2em 0;color:var(--navy)}
 .stack{list-style:none;padding:0;margin:22px 0 0;display:flex;flex-wrap:wrap;gap:8px}
 .stack li{font:500 .8rem "JetBrains Mono",monospace;color:var(--navy3);background:#fff;border:1px solid var(--linha);border-radius:8px;padding:7px 11px}
 
-.cards{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px;margin:0}
+.cards{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;margin:0}
 .card{position:relative;background:var(--card);border:1px solid var(--linha);border-radius:var(--raio);padding:24px;box-shadow:var(--sombra);transition:transform .2s,box-shadow .2s,border-color .2s}
 .card:hover{transform:translateY(-3px);border-color:rgba(236,176,44,.6);box-shadow:0 2px 4px rgba(0,32,73,.06),0 18px 40px -10px rgba(0,32,73,.22)}
 .card h2,.card h3{margin:.2em 0 .45em;font-size:1.1rem;font-family:Montserrat,sans-serif;font-weight:700}
