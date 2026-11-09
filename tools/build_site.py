@@ -250,7 +250,9 @@ def page(path, title, desc, body, h1, *, extra_schema=None, parent=None, ptype="
    E-mail: <a href="mailto:{EMAIL}">{EMAIL}</a><br>{HORARIO}</address>
   </section>
   <nav aria-labelledby="rod-mapa"><h2 id="rod-mapa">Mapa do site</h2><ul>
-   <li><a href="/servicos/">Serviços contábeis</a></li><li><a href="/especialidades/">Especialidades</a></li>
+   <li><a href="/servicos/">Serviços contábeis</a></li><li><a href="/contabilidade-digital-manaus/">Contabilidade digital em Manaus</a></li>
+   <li><a href="/consultoria-contabil-e-fiscal-manaus/">Consultoria contábil e fiscal</a></li><li><a href="/reforma-tributaria-manaus/">Consultoria em reforma tributária</a></li>
+   <li><a href="/especialidades/">Especialidades</a></li>
    <li><a href="/trocar-contador/">Como trocar de contador</a></li><li><a href="/abrir-empresa/">Abrir empresa em Manaus</a></li>
    <li><a href="/conteudos/">Artigos e estudos</a></li><li><a href="/faq/">Perguntas frequentes</a></li>
    <li><a href="/portal-do-cliente/">Portal do Cliente</a></li><li><a href="/sobre/">Sobre a A M</a></li>
@@ -386,10 +388,12 @@ def build():
 
 <section aria-labelledby="h-reforma" class="destaque-reforma"><h2 id="h-reforma">Reforma tributária: sua empresa está preparada?</h2>
 <p>Em janeiro de 2027 a CBS substitui o PIS e a COFINS, e o IBS passa a substituir o ICMS e o ISS até 2033. Empresas do Simples Nacional precisam decidir se recolhem IBS e CBS dentro ou fora do DAS, e a Zona Franca de Manaus tem regras próprias. A A M revisa cadastros e notas, simula a carga e orienta cada decisão.</p>
-<p><a class="btn btn-ouro" href="/conteudos/reforma-tributaria-2027-o-que-muda-para-sua-empresa/">Entenda o que muda em 2027</a></p></section>
+<p><a class="btn btn-ouro" href="/reforma-tributaria-manaus/">Consultoria em reforma tributária</a> <a href="/conteudos/reforma-tributaria-2027-o-que-muda-para-sua-empresa/">Entenda o que muda em 2027</a></p></section>
 
 <section aria-labelledby="h-desafios"><h2 id="h-desafios">Qual é o desafio da sua empresa?</h2>
 <ul class="lista-links">
+<li><a href="/contabilidade-digital-manaus/">Quero uma contabilidade digital</a> — sistema completo, Portal do Cliente e contador dedicado.</li>
+<li><a href="/consultoria-contabil-e-fiscal-manaus/">Preciso de consultoria contábil e fiscal</a> — planejamento tributário, revisão fiscal e recuperação de tributos.</li>
 <li><a href="/abrir-empresa/">Estou abrindo uma empresa em Manaus</a> — CNAE, regime tributário, contrato social e licenças.</li>
 <li><a href="/trocar-contador/">Quero trocar de contador</a> — como funciona a transição, passo a passo.</li>
 <li><a href="/conteudos/simples-nacional-ou-lucro-presumido-estudo-manaus-2026/">Quero saber se pago imposto demais</a> — estudo comparativo Simples × Presumido 2026.</li>
@@ -424,7 +428,7 @@ def build():
   </ul>
   <figcaption>Ilustração. Guias, relatórios e certidões ficam no Portal do Cliente, 24 horas.</figcaption>
  </figure>"""
-    page("/", f"Contabilidade em Manaus/AM | A M Consultoria Contábil",
+    page("/", f"Contabilidade e Consultoria Contábil em Manaus | A M",
          "Contabilidade digital em Manaus/AM: impostos, folha, BPO financeiro, recuperação de PIS e COFINS, consultoria e auditoria. Atendimento 100% digital.",
          body, "Escritório de Contabilidade Digital: um investimento para sua empresa",
          extra_schema=[faq_schema(home_faq)], priority="1.0", freq="weekly", hero_ctas=hero_ctas, hero_extra=painel,
@@ -505,7 +509,7 @@ def build():
     ]
     page("/servicos/", f"Serviços de contabilidade em Manaus | A M Consultoria",
          "Contabilidade, fiscal, departamento pessoal, BPO financeiro, recuperação de PIS e COFINS, consultoria e auditoria em Manaus/AM. Veja cada serviço.",
-         f'<nav class="sumario" aria-label="Nesta página"><h2>Nesta página</h2><ol>{toc}</ol></nav>{secs}{faq_block(serv_faq)}{fontes_html(["ctn", "lc123", "l9718", "esocial"])}{cta()}',
+         f'<nav class="sumario" aria-label="Nesta página"><h2>Nesta página</h2><ol>{toc}</ol><p>Veja também: <a href="/contabilidade-digital-manaus/">contabilidade digital</a> · <a href="/consultoria-contabil-e-fiscal-manaus/">consultoria contábil e fiscal</a> · <a href="/reforma-tributaria-manaus/">consultoria em reforma tributária</a></p></nav>{secs}{faq_block(serv_faq)}{fontes_html(["ctn", "lc123", "l9718", "esocial"])}{cta()}',
          "Serviços de contabilidade para empresas em Manaus e no Brasil",
          extra_schema=[serv_schema, faq_schema(serv_faq)], priority="0.9", freq="monthly",
          lead="Contabilidade, impostos, folha, financeiro e recuperação de tributos em um único parceiro.")
@@ -796,7 +800,8 @@ def build():
 <li>Revisar preços e contratos de longo prazo.</li>
 <li>Mapear fornecedores pelo regime tributário e pelo crédito que geram.</li>
 <li>Acompanhar o fluxo de caixa: o recolhimento passa a ser feito, aos poucos, no momento do pagamento (split payment).</li>
-</ol></section>
+</ol>
+<p>A A M faz esse trabalho com você: conheça a <a href="/reforma-tributaria-manaus/">consultoria em reforma tributária</a>.</p></section>
 """
     reforma_faq = [
         ("Quando o PIS e a COFINS deixam de existir?", "Em janeiro de 2027, quando a CBS passa a substituir integralmente os dois tributos."),
@@ -867,6 +872,122 @@ def build():
            "Dividendos e Lucro Presumido: o que mudou em 2026", corpo,
            ["l15270", "jc15270", "lc224", "contabeis224", "migalhas224"], leitura=6, secao="Tributação",
            resumo="Desde 2026, dividendos acima de R$ 50 mil por mês pagos a uma mesma pessoa física sofrem retenção de 10% sobre o total (Lei 15.270/2025). No Lucro Presumido, a parcela da receita anual acima de R$ 5 milhões tem presunção 10% maior (LC 224/2025), regra hoje questionada na Justiça.")
+
+    # ================================================= PÁGINAS DE PALAVRA-CHAVE (captação)
+    def servico_schema(nome, desc, path):
+        return {"@type": "Service", "name": nome, "description": desc, "provider": {"@id": ORG_ID},
+                "areaServed": [{"@type": "City", "name": "Manaus"}, {"@type": "State", "name": "Amazonas"}, {"@type": "Country", "name": "Brasil"}],
+                "url": SITE + path, "serviceType": nome}
+
+    # --- CONTABILIDADE DIGITAL EM MANAUS
+    cd_faq = [
+        ("O que é contabilidade digital?", "É a contabilidade feita com processos online: notas fiscais e extratos chegam por integração, guias e relatórios ficam num portal na internet e o atendimento acontece por WhatsApp, e-mail e videochamada. Na A M, isso vem junto com contadores que acompanham a sua empresa de perto."),
+        ("Contabilidade digital é mais barata?", "Costuma ser mais eficiente, porque elimina papel, malote e retrabalho. O valor depende do regime tributário, do volume de notas e do número de empregados. A A M envia a proposta depois de um diagnóstico inicial gratuito."),
+        ("Contabilidade digital atende empresa de Manaus com particularidades da Zona Franca?", "Sim. A A M é de Manaus e acompanha ICMS-AM, incentivos da Zona Franca e ISS do município, com a praticidade da contabilidade digital."),
+        ("Vou falar com um robô ou com um contador?", "Com um contador. A tecnologia cuida da parte repetitiva; as dúvidas, as reuniões e as decisões são tratadas com a equipe técnica da A M."),
+    ]
+    body = f"""
+<p>Contabilidade digital não é só trocar o papel pelo computador. Na A M, é a soma de <strong>tecnologia de ponta</strong> com <strong>atendimento próximo</strong>: sistemas que automatizam a rotina e contadores de Manaus que conhecem a sua empresa pelo nome.</p>
+<section aria-labelledby="h-cd-como"><h2 id="h-cd-como">Como funciona a contabilidade digital da A M</h2>
+<ol class="passos">
+<li><strong>Documentos automáticos:</strong> notas fiscais (XML) e extratos bancários (OFX) chegam por integração, sem você precisar enviar nada todo mês.</li>
+<li><strong>Portal do Cliente 24 horas:</strong> guias, balancetes, DRE, certidões e contratos ficam no <a href="/portal-do-cliente/">Portal do Cliente Onvio (Domínio/Thomson Reuters)</a>, com alerta de vencimento.</li>
+<li><strong>App para os empregados:</strong> holerite, férias, 13º e informe de rendimentos no celular de cada colaborador.</li>
+<li><strong>Atendimento humano:</strong> WhatsApp, e-mail e videochamada com contadores, e reuniões para explicar os números.</li>
+<li><strong>Relatórios para decidir:</strong> balancete e DRE mensais com leitura executiva, não só guias para pagar.</li>
+</ol></section>
+<section aria-labelledby="h-cd-dif" class="faixa"><h2 id="h-cd-dif">Digital, mas perto de você</h2>
+<dl class="pilares pilares-4">
+<dt>Sistema completo</dt><dd>Domínio e Onvio, da Thomson Reuters, integrados ao eSocial, SPED, NF-e e FGTS Digital.</dd>
+<dt>Contador dedicado</dt><dd>Você sabe quem cuida do seu CNPJ e fala direto com essa pessoa.</dd>
+<dt>Conhecimento local</dt><dd>Escritório em Manaus, com domínio de ICMS-AM, Zona Franca e ISS de Manaus.</dd>
+<dt>Todo o Brasil</dt><dd>Como tudo é online, atendemos empresas de qualquer estado.</dd>
+</dl></section>
+<section aria-labelledby="h-cd-para"><h2 id="h-cd-para">Para quem é</h2>
+<ul class="lista-links">
+<li>Empresas de serviços, comércio e indústria no <strong>Simples Nacional, Lucro Presumido ou Lucro Real</strong>.</li>
+<li>Quem quer <a href="/trocar-contador/">trocar de contador</a> e ter mais clareza sobre os impostos.</li>
+<li>Quem vai <a href="/abrir-empresa/">abrir empresa em Manaus</a> e quer começar organizado.</li>
+<li>Empresas que querem terceirizar o financeiro com <a href="/servicos/#bpo-financeiro">BPO financeiro</a>.</li>
+</ul></section>
+{faq_block(cd_faq, "Perguntas sobre contabilidade digital", "faq-cd")}
+{cta("Quer uma contabilidade digital com contador de verdade?")}
+"""
+    page("/contabilidade-digital-manaus/", "Contabilidade Digital em Manaus | A M Consultoria Contábil",
+         "Contabilidade digital em Manaus com sistema Onvio/Domínio, Portal do Cliente 24h, app para empregados e contador dedicado. Atendemos todo o Brasil.",
+         body, "Contabilidade digital em Manaus, com contador de verdade ao seu lado",
+         extra_schema=[servico_schema("Contabilidade digital", "Contabilidade online com integração de documentos, Portal do Cliente e atendimento por contador dedicado.", "/contabilidade-digital-manaus/"), faq_schema(cd_faq)],
+         priority="0.95", lead="Tecnologia que automatiza a rotina e atendimento próximo de contadores que conhecem o seu negócio.")
+
+    # --- CONSULTORIA CONTÁBIL E FISCAL
+    cf_faq = [
+        ("Qual a diferença entre contabilidade e consultoria contábil?", "A contabilidade cuida das obrigações: escrituração, impostos e declarações. A consultoria usa esses números para orientar decisões, como escolher o regime tributário, reduzir impostos de forma legal, organizar o caixa e preparar a empresa para crescer."),
+        ("O que faz uma consultoria fiscal?", "Revisa a apuração de impostos federais, estaduais e municipais, a classificação dos produtos e serviços nas notas, as retenções e as obrigações acessórias, para evitar multas e identificar tributos pagos a mais."),
+        ("Preciso ser cliente da contabilidade para contratar a consultoria?", "Não. A consultoria pode ser contratada por projeto, por exemplo, uma revisão tributária ou um estudo de regime, mesmo que a sua contabilidade seja feita por outro escritório."),
+        ("A consultoria pode reduzir meus impostos?", "Muitas vezes, sim, de forma legal: escolhendo o regime certo, aproveitando créditos, segregando receitas corretamente e recuperando valores pagos a mais nos últimos 5 anos. O resultado depende de cada caso e é apresentado com cálculos antes de qualquer mudança."),
+    ]
+    body = f"""
+<p>A consultoria contábil e fiscal da A M transforma a contabilidade em ferramenta de decisão. Analisamos os números da sua empresa, encontramos riscos e oportunidades e explicamos tudo em linguagem clara, <strong>com reunião e relatório</strong>.</p>
+<section aria-labelledby="h-cf-o-que"><h2 id="h-cf-o-que">O que entregamos</h2>
+<ul class="cards">
+<li class="card"><h3>Planejamento tributário</h3><p>Comparação entre Simples Nacional, Lucro Presumido e Lucro Real com os números reais da empresa. Veja nosso <a href="/conteudos/simples-nacional-ou-lucro-presumido-estudo-manaus-2026/">estudo Simples × Presumido 2026</a>.</p></li>
+<li class="card"><h3>Revisão fiscal</h3><p>Conferência de NCM, CFOP, CST, retenções, substituição tributária e ICMS-AM, para evitar autuação e pagamento a mais.</p></li>
+<li class="card"><h3>Recuperação de tributos</h3><p>Identificação de PIS e COFINS pagos a mais nos últimos 5 anos e recuperação por compensação ou restituição. <a href="/servicos/#recuperacao-pis-cofins">Saiba mais</a>.</p></li>
+<li class="card"><h3>Reforma tributária</h3><p>Simulação de impacto da CBS e do IBS e escolha do Simples entre DAS e regime regular. <a href="/reforma-tributaria-manaus/">Consultoria em reforma tributária</a>.</p></li>
+<li class="card"><h3>Consultoria financeira</h3><p>Fluxo de caixa, capital de giro, ponto de equilíbrio, precificação e separação entre pessoa física e jurídica.</p></li>
+<li class="card"><h3>Auditoria</h3><p>Exame de demonstrações e apurações para validar números entre sócios ou antes de uma venda ou investimento. <a href="/servicos/#auditoria">Ver escopo</a>.</p></li>
+</ul></section>
+<section aria-labelledby="h-cf-como"><h2 id="h-cf-como">Como funciona</h2>
+<ol class="passos">
+<li><strong>Diagnóstico:</strong> conversa inicial e levantamento de documentos (declarações, notas e apurações).</li>
+<li><strong>Análise técnica:</strong> cálculos e cruzamentos feitos pela equipe de contadores.</li>
+<li><strong>Relatório e reunião:</strong> resultados, riscos e recomendações explicados aos sócios.</li>
+<li><strong>Implantação:</strong> ajustes em cadastros, regime ou rotinas, com acompanhamento.</li>
+</ol></section>
+{faq_block(cf_faq, "Perguntas sobre consultoria contábil e fiscal", "faq-cf")}
+{fontes_html(["lc123", "ctn", "lc214"])}
+{cta("Quer uma análise contábil e fiscal da sua empresa?")}
+"""
+    page("/consultoria-contabil-e-fiscal-manaus/", "Consultoria Contábil e Fiscal em Manaus | A M Consultoria",
+         "Consultoria contábil e fiscal em Manaus: planejamento tributário, revisão fiscal, recuperação de PIS e COFINS, reforma tributária e consultoria financeira.",
+         body, "Consultoria contábil e fiscal em Manaus",
+         extra_schema=[servico_schema("Consultoria contábil e fiscal", "Planejamento tributário, revisão fiscal, recuperação de tributos e consultoria financeira para empresas.", "/consultoria-contabil-e-fiscal-manaus/"), faq_schema(cf_faq)],
+         priority="0.95", lead="Números que viram decisões: planejamento tributário, revisão fiscal e recuperação de tributos com relatório e reunião.")
+
+    # --- CONSULTORIA EM REFORMA TRIBUTÁRIA
+    rt_faq = [
+        ("Por que contratar uma consultoria em reforma tributária agora?", "Porque as primeiras mudanças com efeito no caixa começam em janeiro de 2027, quando a CBS substitui o PIS e a COFINS. Cadastros, notas fiscais, preços e contratos precisam estar ajustados antes disso."),
+        ("Minha empresa é do Simples. A reforma me afeta?", "Sim. O Simples continua, mas a empresa pode escolher recolher IBS e CBS dentro ou fora do DAS, e essa escolha muda o crédito que os seus clientes aproveitam. Também passa a ser obrigatório informar IBS e CBS nas notas."),
+        ("A consultoria atende empresas da Zona Franca de Manaus?", "Sim. A A M analisa os mecanismos próprios da ZFM na LC 214/2025, como alíquota zero e créditos presumidos de IBS e CBS e a manutenção do IPI fora da ZFM para produtos fabricados no polo."),
+    ]
+    body = f"""
+<p>A reforma tributária muda a forma como todas as empresas calculam e pagam impostos. A A M prepara a sua empresa <strong>antes</strong> que as mudanças cheguem ao caixa, com diagnóstico, simulação de impacto e ajustes práticos.</p>
+<section aria-labelledby="h-rt-o-que"><h2 id="h-rt-o-que">O que a consultoria inclui</h2>
+<ol class="passos">
+<li><strong>Diagnóstico:</strong> regime atual, perfil de clientes e fornecedores, produtos e serviços vendidos.</li>
+<li><strong>Revisão de cadastros:</strong> NCM, NBS, CST e classificação tributária para destacar IBS e CBS corretamente nas notas.</li>
+<li><strong>Simulação de impacto:</strong> carga tributária e fluxo de caixa de 2027 em diante, incluindo o split payment.</li>
+<li><strong>Decisão do Simples:</strong> estudo para recolher IBS e CBS dentro ou fora do DAS.</li>
+<li><strong>Preços e contratos:</strong> revisão de formação de preço e cláusulas de reajuste.</li>
+<li><strong>Zona Franca de Manaus:</strong> análise de créditos presumidos e do tratamento do IPI para quem opera no polo.</li>
+</ol></section>
+<section aria-labelledby="h-rt-datas"><h2 id="h-rt-datas">Datas que importam</h2>
+<ul class="lista-links">
+<li><strong>2026:</strong> teste com CBS de 0,9% e IBS de 0,1% nas notas, sem recolhimento efetivo.</li>
+<li><strong>Janeiro de 2027:</strong> a CBS substitui o PIS e a COFINS e começa o Imposto Seletivo.</li>
+<li><strong>2029 a 2032:</strong> o IBS substitui gradualmente o ICMS e o ISS.</li>
+<li><strong>2033:</strong> sistema novo em vigor de forma completa.</li>
+</ul>
+<p>Detalhes no artigo <a href="/conteudos/reforma-tributaria-2027-o-que-muda-para-sua-empresa/">Reforma tributária: o que muda para sua empresa em 2027</a>.</p></section>
+{faq_block(rt_faq, "Perguntas sobre a consultoria em reforma tributária", "faq-rt")}
+{fontes_html(["ec132", "lc214", "ba_reforma", "omie_zfm"])}
+{cta("Prepare sua empresa para a reforma tributária")}
+"""
+    page("/reforma-tributaria-manaus/", "Consultoria em Reforma Tributária em Manaus | A M Consultoria",
+         "Consultoria em reforma tributária em Manaus: diagnóstico, revisão de cadastros, simulação de CBS e IBS, decisão do Simples e regras da Zona Franca.",
+         body, "Consultoria em reforma tributária para empresas de Manaus",
+         extra_schema=[servico_schema("Consultoria em reforma tributária", "Diagnóstico, simulação de impacto de CBS e IBS e adequação de cadastros, preços e contratos.", "/reforma-tributaria-manaus/"), faq_schema(rt_faq)],
+         priority="0.95", lead="Diagnóstico, simulação de impacto e ajustes práticos antes de a CBS e o IBS chegarem ao seu caixa.")
 
     # ---------- ÍNDICE CONTEÚDOS
     lis = "".join(f'<li class="card"><p class="tag">{e(s)} · {l} min</p><h2><a href="{p}">{e(t)}</a></h2><p>{e(d)}</p></li>' for p, t, d, s, l in artigos)
@@ -953,6 +1074,9 @@ def build():
 - Instagram: {INSTAGRAM}
 
 ## Páginas principais
+- [Contabilidade digital em Manaus]({SITE}/contabilidade-digital-manaus/): sistema Onvio/Domínio, Portal do Cliente, app do empregado e contador dedicado
+- [Consultoria contábil e fiscal em Manaus]({SITE}/consultoria-contabil-e-fiscal-manaus/): planejamento tributário, revisão fiscal, recuperação de tributos
+- [Consultoria em reforma tributária]({SITE}/reforma-tributaria-manaus/): diagnóstico, simulação de CBS/IBS, Simples e Zona Franca
 - [Serviços]({SITE}/servicos/): escopo de contabilidade, fiscal, departamento pessoal, BPO financeiro, recuperação de créditos de PIS e COFINS, consultoria e auditoria
 - [Trocar de contador]({SITE}/trocar-contador/): passo a passo da transição
 - [Abrir empresa em Manaus]({SITE}/abrir-empresa/): etapas, JUCEA, inscrições e regime tributário
