@@ -144,6 +144,11 @@ tbody tr:hover td{background:#FFFBF0}
 address{font-style:normal}
 .contato{background:#fff;border:1px solid var(--linha);border-radius:18px;padding:12px 26px;box-shadow:var(--sombra);max-width:620px}
 
+.destaque-reforma{background:linear-gradient(135deg,#FFF8E6,#fff);border:1px solid rgba(236,176,44,.55);border-radius:24px;padding:6px 32px 26px;margin:56px 0}
+.destaque-reforma h2{margin-top:1em}
+.lista-app{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.lista-app li{background:#fff;border:1px solid var(--linha);border-radius:12px;padding:12px 14px 12px 40px;position:relative;font-weight:500;color:var(--navy)}
+.lista-app li::before{content:"";position:absolute;left:14px;top:17px;width:14px;height:14px;border-radius:4px;background:linear-gradient(135deg,var(--ouro2),var(--ouro))}
 /* revelar ao rolar (só com JS) */
 .js .revela{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
 .js .revela.visivel{opacity:1;transform:none}

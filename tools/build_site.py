@@ -40,6 +40,11 @@ FONTES = {
     "l9249": ("Lei nº 9.249/1995 (percentuais de presunção) — Planalto", "https://www.planalto.gov.br/ccivil_03/leis/l9249.htm"),
     "l9718": ("Lei nº 9.718/1998 (PIS/Cofins cumulativos) — Planalto", "https://www.planalto.gov.br/ccivil_03/leis/l9718compilada.htm"),
     "ctn": ("Código Tributário Nacional, art. 168 (prazo de 5 anos para restituição) — Planalto", "https://www.planalto.gov.br/ccivil_03/leis/l5172compilado.htm"),
+    "ec132": ("Emenda Constitucional nº 132/2023 (reforma tributária) — Planalto", "https://www.planalto.gov.br/ccivil_03/constituicao/emendas/emc/emc132.htm"),
+    "ba_reforma": ("Governo da Bahia/Sefaz-BA — Reforma tributária: calendário e o que muda (set. 2026)", "https://www.ba.gov.br/comunicacao/noticias/2026-09/384149/reforma-tributaria-confira-o-calendario-e-o-que-muda-para-consumidores-e"),
+    "nfeio_cgsn": ("NFE.io — Prazo do Simples Nacional para optar por IBS e CBS fora do DAS (Resolução CGSN nº 194/2026)", "https://nfe.io/blog/reforma-tributaria/novo-prazo-simples-nacional-ibs-cbs/"),
+    "omie_zfm": ("Omie — Zona Franca de Manaus na reforma tributária (LC 214/2025, arts. 445 a 455)", "https://www.omie.com.br/blog/zona-franca-manaus-reforma-tributaria-impacto-industrias/"),
+    "app_empregado": ("App Onvio Portal do Empregado — Thomson Reuters (App Store)", "https://apps.apple.com/br/app/id1534034198"),
     "lc116": ("Lei Complementar nº 116/2003 (ISS) — Planalto", "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm"),
     "lc214": ("Lei Complementar nº 214/2025 (IBS e CBS) — Planalto", "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214.htm"),
     "lc224": ("Lei Complementar nº 224/2025 — Planalto", "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp224.htm"),
@@ -341,7 +346,7 @@ def build():
     servicos_resumo = [
         ("Contabilidade empresarial e gerencial", "ECD/ECF, conciliação bancária, balancetes mensais, Balanço Patrimonial e DRE com análise para decisão.", "/servicos/#contabilidade"),
         ("Fiscal e inteligência tributária", "Apuração no Simples Nacional, Lucro Presumido e Lucro Real, obrigações acessórias e planejamento tributário, incluindo ICMS-AM, ZFM e ISS Manaus.", "/servicos/#fiscal"),
-        ("Departamento pessoal", "Folha, pró-labore, admissões e rescisões com eSocial, DCTFWeb e FGTS Digital.", "/servicos/#departamento-pessoal"),
+        ("Departamento pessoal", "Folha, pró-labore, admissões e rescisões com eSocial, DCTFWeb e FGTS Digital. Seus empregados consultam holerite, férias, 13º e informe de rendimentos pelo aplicativo.", "/servicos/#departamento-pessoal"),
         ("Consultoria contábil, tributária e financeira", "Plano de contas, centros de custo, fluxo de caixa, separação entre pessoa física e jurídica e reenquadramento tributário.", "/servicos/#consultoria"),
         ("BPO financeiro", "Terceirização da rotina financeira: contas a pagar e a receber, conciliação bancária, emissão de cobranças e notas, e fluxo de caixa integrado à contabilidade.", "/servicos/#bpo-financeiro"),
         ("Recuperação de créditos de PIS e COFINS", "Revisão dos últimos 5 anos para identificar PIS e COFINS pagos a mais, como produtos monofásicos no Simples, ICMS na base de cálculo e créditos de insumos, e recuperação por compensação ou restituição.", "/servicos/#recuperacao-pis-cofins"),
@@ -365,7 +370,7 @@ def build():
     ]
     body = f"""
 <section class="intro" aria-label="Apresentação"><p>A <strong>{e(NOME)}</strong> é um escritório de contabilidade em Manaus/AM que cuida da contabilidade, dos impostos e da folha de pagamento de micro, pequenas e médias empresas, com processos digitais e atendimento consultivo direto com contadores. Atendemos empresas no Simples Nacional, Lucro Presumido e Lucro Real, em Manaus e em todo o país.</p>
-<ul class="stack" aria-label="Tecnologias e sistemas que usamos"><li>Onvio</li><li>Domínio · Thomson Reuters</li><li>eSocial</li><li>SPED</li><li>NF-e / NFS-e</li><li>FGTS Digital</li><li>DCTFWeb</li></ul></section>
+<ul class="stack" aria-label="Tecnologias e sistemas que usamos"><li>Onvio</li><li>App Portal do Empregado</li><li>Domínio · Thomson Reuters</li><li>eSocial</li><li>SPED</li><li>NF-e / NFS-e</li><li>FGTS Digital</li><li>DCTFWeb</li></ul></section>
 
 <section aria-labelledby="h-servicos"><h2 id="h-servicos">Serviços de contabilidade em Manaus</h2>
 <ul class="cards">{cards}</ul>
@@ -373,11 +378,15 @@ def build():
 
 <section aria-labelledby="h-dif" class="faixa"><h2 id="h-dif">Como trabalhamos</h2>
 <dl class="pilares pilares-4">
-<dt>Tecnologia</dt><dd>Documentos, guias, balancetes e certidões ficam no <a href="/portal-do-cliente/">Portal do Cliente (Onvio, Domínio/Thomson Reuters)</a>, disponível 24 horas.</dd>
+<dt>Tecnologia</dt><dd>Documentos, guias, balancetes e certidões ficam no <a href="/portal-do-cliente/">Portal do Cliente (Onvio, Domínio/Thomson Reuters)</a>, 24 horas. Seus empregados têm um aplicativo próprio para holerites, férias, 13º e informe de rendimentos.</dd>
 <dt>Atendimento</dt><dd>Você conversa diretamente com contadores que conhecem o seu CNPJ e explicam as normas em linguagem clara.</dd>
 <dt>Segurança</dt><dd>Monitoramento de certidões negativas (CNDs) e conferência preventiva de obrigações acessórias para reduzir o risco de autuação.</dd>
 <dt>Estratégia</dt><dd>Balancetes, DRE e comparativos de regime tributário com leitura executiva para apoiar decisões dos sócios.</dd>
 </dl></section>
+
+<section aria-labelledby="h-reforma" class="destaque-reforma"><h2 id="h-reforma">Reforma tributária: sua empresa está preparada?</h2>
+<p>Em janeiro de 2027 a CBS substitui o PIS e a COFINS, e o IBS passa a substituir o ICMS e o ISS até 2033. Empresas do Simples Nacional precisam decidir se recolhem IBS e CBS dentro ou fora do DAS, e a Zona Franca de Manaus tem regras próprias. A A M revisa cadastros e notas, simula a carga e orienta cada decisão.</p>
+<p><a class="btn btn-ouro" href="/conteudos/reforma-tributaria-2027-o-que-muda-para-sua-empresa/">Entenda o que muda em 2027</a></p></section>
 
 <section aria-labelledby="h-desafios"><h2 id="h-desafios">Qual é o desafio da sua empresa?</h2>
 <ul class="lista-links">
@@ -389,6 +398,7 @@ def build():
 
 <section aria-labelledby="h-conteudo"><h2 id="h-conteudo">Conteúdos recentes</h2>
 <ul class="lista-links">
+<li><a href="/conteudos/reforma-tributaria-2027-o-que-muda-para-sua-empresa/">Reforma tributária: o que muda para sua empresa em 2027</a></li>
 <li><a href="/conteudos/simples-nacional-ou-lucro-presumido-estudo-manaus-2026/">Estudo A M 2026: Simples Nacional ou Lucro Presumido para empresas de serviços</a></li>
 <li><a href="/conteudos/quando-trocar-de-contador/">Quando trocar de contador? 7 sinais claros</a></li>
 <li><a href="/conteudos/obrigacoes-simples-nacional-alem-do-das/">Simples Nacional: obrigações além do DAS</a></li>
@@ -436,14 +446,15 @@ def build():
           "Parametrização de emissão de NF-e e NFS-e",
           "Planejamento tributário anual e comparativo entre regimes",
           "Revisão de NCM, CFOP, substituição tributária e retenções na fonte",
-          "Preparação para a reforma tributária (IBS e CBS)"]),
+          "Preparação para a reforma tributária: CBS, IBS, Imposto Seletivo e escolha do Simples entre DAS e regime regular"]),
         ("departamento-pessoal", "Departamento pessoal e gestão trabalhista",
          "Gestão do ciclo de vida dos colaboradores e do pró-labore dos sócios, em conformidade com eSocial, DCTFWeb e FGTS Digital, com recibos disponíveis no portal.",
          ["Folha de pagamento mensal, adiantamentos e pró-labore",
           "Admissões digitais com validação no eSocial",
           "Programação e cálculo de férias individuais e coletivas",
           "Rescisões com conferência de verbas",
-          "Apuração de encargos: INSS, FGTS Digital e IRRF"]),
+          "Apuração de encargos: INSS, FGTS Digital e IRRF",
+          "Aplicativo para o empregado consultar holerites, férias, 13º salário e informe de rendimentos no celular"]),
         ("consultoria", "Consultoria contábil, tributária e financeira",
          "Trabalhamos com sócios e gestores para reorganizar finanças, corrigir enquadramentos e preparar a empresa para crescer.",
          ["Reorganização de plano de contas e centros de custo",
@@ -587,14 +598,18 @@ def build():
 <dt>DRE e balancetes</dt><dd>Relatórios gerenciais mensais.</dd>
 <dt>Certidões (CNDs)</dt><dd>Acompanhamento da regularidade federal, estadual (SEFAZ-AM) e municipal.</dd>
 <dt>Folha de pagamento</dt><dd>Holerites, recibos de férias e documentos dos colaboradores.</dd></dl></section>
+<section aria-labelledby="h-app"><h2 id="h-app">Aplicativo para os seus empregados</h2>
+<p>Além do Portal do Cliente, usado pela empresa, cada empregado tem acesso ao aplicativo <strong>Onvio Portal do Empregado</strong> (Thomson Reuters) no celular. Sem precisar pedir ao RH, ele consulta:</p>
+<ul class="lista-app"><li>Holerites (recibos de pagamento) de todos os meses</li><li>Recibos e avisos de férias</li><li>Recibos do 13º salário</li><li>Informe de rendimentos para a declaração do Imposto de Renda</li></ul>
+<p>Isso reduz pedidos repetidos ao departamento pessoal e dá ao empregado acesso aos próprios documentos a qualquer hora. A A M faz a liberação do acesso de cada colaborador.</p></section>
 <section aria-labelledby="h-tec"><h2 id="h-tec">Tecnologia por trás do atendimento</h2>
 <p>Captura automatizada de XMLs de notas fiscais e integração de extratos bancários (OFX) reduzem digitação e retrabalho, o que permite fechar a contabilidade no prazo e com mais conferência.</p></section>
-<p><a class="btn btn-ouro" href="{PORTAL}" rel="noopener">Acessar o Portal do Cliente</a></p>{cta()}
+<p><a class="btn btn-ouro" href="{PORTAL}" rel="noopener">Acessar o Portal do Cliente</a></p>{fontes_html(["app_empregado"])}{cta()}
 """
     page("/portal-do-cliente/", "Portal do Cliente: guias, balancetes e CNDs | A M Consultoria",
-         "Portal do Cliente A M (Onvio/Domínio): guias de impostos, balancetes, DRE, certidões negativas, folha e documentos fiscais disponíveis 24 horas.",
-         portal_body, "Portal do Cliente: sua contabilidade em um só lugar", priority="0.8",
-         lead="Guias, relatórios, balancetes, CNDs e folha disponíveis 24 horas.")
+         "Portal do Cliente A M (Onvio/Domínio) com guias, balancetes e certidões, e app para o empregado ver holerite, férias, 13º e informe de rendimentos.",
+         portal_body, "Portal do Cliente e app do empregado", priority="0.8",
+         lead="Para a empresa, guias, relatórios e certidões 24 horas. Para os empregados, um aplicativo com holerite, férias, 13º e informe de rendimentos.")
     page("/tecnologia/", f"Contabilidade digital em Manaus | A M Consultoria",
          "Contabilidade 100% digital: integração Onvio/Domínio, captura de XMLs, extratos OFX e atendimento consultivo sem papel para empresas de Manaus e do Brasil.",
          portal_body, "Contabilidade digital, sem papel e sem retrabalho", priority="0.6",
@@ -727,6 +742,7 @@ def build():
     ]
     global ARTIGOS_IDX
     ARTIGOS_IDX = [
+        ("reforma-tributaria-2027-o-que-muda-para-sua-empresa", "Reforma tributária: o que muda para sua empresa em 2027"),
         ("simples-nacional-ou-lucro-presumido-estudo-manaus-2026", "Estudo A M 2026: Simples Nacional ou Lucro Presumido para empresas de serviços"),
         ("quando-trocar-de-contador", "Quando trocar de contador? 7 sinais claros"),
         ("obrigacoes-simples-nacional-alem-do-das", "Simples Nacional: obrigações além do DAS mensal"),
@@ -744,6 +760,54 @@ def build():
                    "licenca": "CC BY 4.0", "data": PUBLICADO,
                    "premissas": "Ver metodologia em " + SITE + "/conteudos/simples-nacional-ou-lucro-presumido-estudo-manaus-2026/",
                    "cenario_folha_30_anexo_III": d30, "cenario_folha_10_anexo_V": d10}, f, ensure_ascii=False, indent=1)
+
+    # --- REFORMA TRIBUTÁRIA
+    corpo = """
+<section aria-labelledby="h-crono"><h2 id="h-crono">Cronograma da reforma tributária</h2>
+<div class="tabela"><table><caption>Principais etapas da transição (EC 132/2023 e LC 214/2025)</caption>
+<thead><tr><th scope="col">Quando</th><th scope="col">O que acontece</th></tr></thead><tbody>
+<tr><th scope="row">2026</th><td style="text-align:left">Ano de teste: CBS de 0,9% e IBS de 0,1% destacados nas notas fiscais das empresas do regime regular, sem recolhimento efetivo para quem cumpre as obrigações acessórias. Novos campos de IBS e CBS na NF-e e na NFS-e.</td></tr>
+<tr><th scope="row">Janeiro de 2027</th><td style="text-align:left">A CBS substitui integralmente o PIS e a COFINS. O IPI passa a ter alíquota zero para a maior parte dos produtos e continua apenas para itens que também são fabricados na Zona Franca de Manaus. Começa o Imposto Seletivo sobre produtos prejudiciais à saúde e ao meio ambiente. Empresas do Simples passam a informar IBS e CBS nas notas.</td></tr>
+<tr><th scope="row">2027 e 2028</th><td style="text-align:left">O IBS segue com alíquota simbólica de teste.</td></tr>
+<tr><th scope="row">2029 a 2032</th><td style="text-align:left">O ICMS e o ISS são reduzidos gradualmente e substituídos pelo IBS.</td></tr>
+<tr><th scope="row">2033</th><td style="text-align:left">Fim do ICMS e do ISS. Sistema novo em vigor de forma completa.</td></tr>
+</tbody></table></div></section>
+<section aria-labelledby="h-simples"><h2 id="h-simples">Empresas do Simples Nacional</h2>
+<p>O Simples Nacional continua existindo. A partir de 2027, a empresa optante pode escolher entre duas formas de recolher IBS e CBS:</p>
+<ul><li><strong>Dentro do DAS</strong>, como hoje: mais simples, mas os clientes que são empresas do regime regular aproveitam menos crédito na compra.</li>
+<li><strong>Fora do DAS, pelo regime regular</strong>: IBS e CBS apurados à parte, com crédito integral para o cliente. Pode valer a pena para quem vende principalmente para outras empresas.</li></ul>
+<p>Para o primeiro semestre de 2027, o prazo de opção foi prorrogado até 30 de outubro de 2026 pela Resolução CGSN nº 194/2026, e há uma janela de desistência no fim de 2026. A escolha depende de quem são os seus clientes e da sua margem, por isso precisa de simulação antes.</p></section>
+<section aria-labelledby="h-regular"><h2 id="h-regular">Empresas do Lucro Presumido e do Lucro Real</h2>
+<ul><li><strong>Crédito amplo:</strong> IBS e CBS são não cumulativos, com crédito sobre praticamente tudo o que a empresa compra para a atividade, desde que o imposto tenha sido pago pelo fornecedor.</li>
+<li><strong>Preço e contratos:</strong> como o imposto é cobrado "por fora", é preciso revisar formação de preço e cláusulas de reajuste dos contratos longos.</li>
+<li><strong>Fornecedores:</strong> comprar de quem está no Simples gera menos crédito, o que muda a escolha de fornecedores.</li>
+<li><strong>Sistemas e notas:</strong> cadastros de produtos (NCM, CST e classificação tributária) precisam estar corretos para destacar IBS e CBS.</li></ul></section>
+<section aria-labelledby="h-zfm"><h2 id="h-zfm">Zona Franca de Manaus</h2>
+<p>A Constituição manteve o tratamento diferenciado da Zona Franca de Manaus. A LC 214/2025 prevê, entre outros pontos:</p>
+<ul><li>alíquota zero de IBS e CBS na entrada de insumos vindos de outras regiões para a indústria incentivada, com crédito presumido de IBS;</li>
+<li>crédito presumido de CBS para a indústria da ZFM a partir de 2027;</li>
+<li>manutenção do IPI fora da ZFM para produtos que também são fabricados no polo, preservando a vantagem competitiva de quem produz em Manaus.</li></ul>
+<p>Os percentuais variam conforme o tipo de bem e a origem dos insumos, e há discussões judiciais em andamento. Cada empresa precisa de análise individual.</p></section>
+<section aria-labelledby="h-checklist"><h2 id="h-checklist">Checklist para se preparar</h2>
+<ol class="passos">
+<li>Revisar o cadastro de produtos e serviços (NCM, NBS, CST e classificação tributária).</li>
+<li>Confirmar que o sistema emissor de notas já destaca IBS e CBS.</li>
+<li>Simular a carga de 2027 e a escolha entre DAS e regime regular, se a empresa for do Simples.</li>
+<li>Revisar preços e contratos de longo prazo.</li>
+<li>Mapear fornecedores pelo regime tributário e pelo crédito que geram.</li>
+<li>Acompanhar o fluxo de caixa: o recolhimento passa a ser feito, aos poucos, no momento do pagamento (split payment).</li>
+</ol></section>
+"""
+    reforma_faq = [
+        ("Quando o PIS e a COFINS deixam de existir?", "Em janeiro de 2027, quando a CBS passa a substituir integralmente os dois tributos."),
+        ("O Simples Nacional acaba com a reforma tributária?", "Não. O Simples continua. A partir de 2027 a empresa optante pode escolher recolher IBS e CBS dentro do DAS ou fora dele, pelo regime regular."),
+        ("A Zona Franca de Manaus perde os incentivos?", "Não. A Emenda Constitucional 132/2023 manteve o tratamento diferenciado da ZFM, e a LC 214/2025 criou mecanismos próprios, como alíquota zero e créditos presumidos de IBS e CBS e a manutenção do IPI fora da ZFM para produtos fabricados no polo."),
+    ]
+    artigo("reforma-tributaria-2027-o-que-muda-para-sua-empresa", "Reforma tributária: o que muda em 2027 para sua empresa | A M",
+           "CBS no lugar de PIS e COFINS em 2027, IBS até 2033, opções do Simples Nacional e regras da Zona Franca de Manaus: cronograma e checklist da reforma.",
+           "Reforma tributária: o que muda para sua empresa em 2027", corpo,
+           ["ec132", "lc214", "ba_reforma", "nfeio_cgsn", "omie_zfm"], faq=reforma_faq, leitura=7, secao="Reforma tributária", published="2026-11-09", modified="2026-11-09",
+           resumo="Em 2027 a CBS substitui o PIS e a COFINS e o IPI é zerado para a maioria dos produtos, exceto os que concorrem com a Zona Franca de Manaus. O IBS substitui o ICMS e o ISS aos poucos, de 2029 a 2032, e o sistema novo vale por completo em 2033. Empresas do Simples podem escolher recolher IBS e CBS dentro ou fora do DAS.")
 
     # --- TROCAR CONTADOR (atualizado)
     corpo = """
@@ -829,6 +893,8 @@ def build():
         ("É possível recuperar PIS e COFINS pagos a mais?", "Sim, dentro do prazo de 5 anos. Os casos mais comuns são produtos monofásicos não segregados no Simples Nacional, a exclusão do ICMS da base de cálculo (Tema 69 do STF) e créditos de insumos no Lucro Real. Veja como funciona a <a href=\"/servicos/#recuperacao-pis-cofins\">recuperação de créditos de PIS e COFINS</a>."),
         ("A A M atende empresas da Zona Franca de Manaus?", "Sim. Acompanhamos ICMS-AM, incentivos e obrigações próprias de empresas instaladas na Zona Franca de Manaus."),
         ("O que é o Portal do Cliente?", "É a plataforma Onvio (Domínio/Thomson Reuters) onde o cliente acessa guias, balancetes, DRE, certidões, folha e documentos 24 horas por dia."),
+        ("Meus empregados conseguem ver o holerite pelo celular?", "Sim. Clientes da A M com folha de pagamento dão aos empregados acesso ao aplicativo Onvio Portal do Empregado, onde eles consultam holerites, recibos de férias, 13º salário e o informe de rendimentos para o Imposto de Renda."),
+        ("O que muda com a reforma tributária em 2027?", "A CBS substitui o PIS e a COFINS, o IPI é zerado para a maioria dos produtos (exceto os que concorrem com a Zona Franca de Manaus) e começa o Imposto Seletivo. O IBS substitui o ICMS e o ISS gradualmente até 2033. Veja o <a href=\"/conteudos/reforma-tributaria-2027-o-que-muda-para-sua-empresa/\">guia completo</a>."),
         ("Preciso ir ao escritório?", f"Não. Todo o atendimento pode ser digital. Se preferir, o escritório fica na {ENDERECO['rua']}, {ENDERECO['bairro']}, Manaus/AM, {HORARIO.lower()}."),
         ("Que documentos preciso para pedir orçamento?", "CNPJ (se a empresa já existir), regime tributário atual, faturamento médio mensal, número de funcionários e quantidade aproximada de notas fiscais emitidas e recebidas por mês."),
     ]
@@ -890,7 +956,7 @@ def build():
 - [Serviços]({SITE}/servicos/): escopo de contabilidade, fiscal, departamento pessoal, BPO financeiro, recuperação de créditos de PIS e COFINS, consultoria e auditoria
 - [Trocar de contador]({SITE}/trocar-contador/): passo a passo da transição
 - [Abrir empresa em Manaus]({SITE}/abrir-empresa/): etapas, JUCEA, inscrições e regime tributário
-- [Perguntas frequentes]({SITE}/faq/): 18 respostas diretas
+- [Perguntas frequentes]({SITE}/faq/): 20 respostas diretas
 - [Sobre]({SITE}/sobre/): dados da empresa e equipe
 - [Contato]({SITE}/contato/)
 
@@ -1078,6 +1144,11 @@ tbody tr:hover td{background:#FFFBF0}
 address{font-style:normal}
 .contato{background:#fff;border:1px solid var(--linha);border-radius:18px;padding:12px 26px;box-shadow:var(--sombra);max-width:620px}
 
+.destaque-reforma{background:linear-gradient(135deg,#FFF8E6,#fff);border:1px solid rgba(236,176,44,.55);border-radius:24px;padding:6px 32px 26px;margin:56px 0}
+.destaque-reforma h2{margin-top:1em}
+.lista-app{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.lista-app li{background:#fff;border:1px solid var(--linha);border-radius:12px;padding:12px 14px 12px 40px;position:relative;font-weight:500;color:var(--navy)}
+.lista-app li::before{content:"";position:absolute;left:14px;top:17px;width:14px;height:14px;border-radius:4px;background:linear-gradient(135deg,var(--ouro2),var(--ouro))}
 /* revelar ao rolar (só com JS) */
 .js .revela{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
 .js .revela.visivel{opacity:1;transform:none}
