@@ -18,7 +18,7 @@ ENDERECO = {"rua": "Rua Mocajuba, nº 93, Sala 05", "bairro": "Dom Pedro I", "ci
 GEO = (-3.0845, -60.0365)
 TEL1_TXT, TEL1_INTL = "(92) 9431-2735", "+559294312735"
 TEL2_TXT, TEL2_INTL = "(11) 98202-7102", "+5511982027102"
-EMAIL = "contabilamconsultoria1@gmail.com"
+EMAIL = "contato@amconsultoriacontabil.com.br"
 INSTAGRAM = "https://www.instagram.com/am.consultoria.contabil/"
 FACEBOOK = "https://www.facebook.com/profile.php?id=61587344352334"
 PORTAL = "https://onvio.com.br/clientcenter/pt/auth"
