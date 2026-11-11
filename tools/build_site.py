@@ -15,17 +15,19 @@ CNPJ = "62.806.802/0001-40"
 FUNDACAO = "2025-09-19"
 ENDERECO = {"rua": "Rua Mocajuba, nº 93, Sala 05", "bairro": "Dom Pedro I", "cidade": "Manaus",
             "uf": "AM", "cep": "69040-530"}
-GEO = (-3.0845, -60.0365)
-TEL1_TXT, TEL1_INTL = "(92) 9431-2735", "+559294312735"
+GEO = (-3.0928928, -60.0455342)  # coordenadas do Google Maps
+TEL1_TXT, TEL1_INTL = "(92) 99431-2735", "+5592994312735"
 TEL2_TXT, TEL2_INTL = "(11) 98202-7102", "+5511982027102"
 EMAIL = "contato@amconsultoriacontabil.com.br"
 INSTAGRAM = "https://www.instagram.com/am.consultoria.contabil/"
 FACEBOOK = "https://www.facebook.com/profile.php?id=61587344352334"
 PORTAL = "https://onvio.com.br/clientcenter/pt/auth"
+GOOGLE_MAPS = "https://www.google.com/maps?cid=9222782699476468875"
+GOOGLE_AVALIAR = "https://search.google.com/local/writereview?placeid=ChIJbdNKDQMRbJIRi8TpMgDo_X8"
 HORARIO = "Segunda a sexta, das 8h às 18h"
 # Autor: preencha nome e CRC do contador responsável para virar autor pessoa (Person) nos artigos.
-AUTOR_NOME = ""          # ex.: "Fulano de Tal"
-AUTOR_CRC = ""           # ex.: "CRC-AM 000000/O"
+AUTOR_NOME = "Marcelo da Silva Mouzinho"
+AUTOR_CRC = "CRC-AM 018065/O-2"
 AUTOR_CARGO = "Contador responsável técnico"
 EQUIPE = "Equipe técnica da A M Consultoria"
 PUBLICADO = "2026-11-08"
@@ -97,7 +99,8 @@ def org_schema():
                           "areaServed": "BR", "availableLanguage": "Portuguese"},
                          {"@type": "ContactPoint", "telephone": TEL2_INTL, "contactType": "sales",
                           "areaServed": "BR", "availableLanguage": "Portuguese"}],
-        "sameAs": [INSTAGRAM, FACEBOOK],
+        "sameAs": [INSTAGRAM, FACEBOOK, GOOGLE_MAPS],
+        "hasMap": GOOGLE_MAPS,
         "priceRange": "$$",
     }
 
@@ -114,8 +117,8 @@ def autor_schema():
 
 def autor_html():
     if AUTOR_NOME:
-        crc = f" · {e(AUTOR_CRC)}" if AUTOR_CRC else ""
-        return f'<a href="/sobre/#equipe" rel="author">{e(AUTOR_NOME)}</a>, {e(AUTOR_CARGO)}{crc}'
+        crc = f", {e(AUTOR_CRC)}" if AUTOR_CRC else ""
+        return f'<a href="/sobre/#equipe" rel="author">{e(AUTOR_NOME)}</a>, contador{crc}'
     return f'<a href="/sobre/#equipe" rel="author">{e(EQUIPE)}</a>'
 
 
@@ -260,7 +263,9 @@ def page(path, title, desc, body, h1, *, extra_schema=None, parent=None, ptype="
   <section aria-labelledby="rod-redes"><h2 id="rod-redes">Redes e acesso</h2><ul>
    <li><a href="{INSTAGRAM}" rel="noopener me">Instagram @am.consultoria.contabil</a></li>
    <li><a href="{FACEBOOK}" rel="noopener me">Facebook</a></li>
-   <li><a href="{PORTAL}" rel="noopener">Acessar Portal do Cliente (Onvio)</a></li></ul></section>
+   <li><a href="{PORTAL}" rel="noopener">Acessar Portal do Cliente (Onvio)</a></li>
+   <li><a href="{GOOGLE_MAPS}" rel="noopener">Ver no Google Maps e ler avaliações</a></li>
+   <li><a href="{GOOGLE_AVALIAR}" rel="noopener">Avaliar a A M no Google</a></li></ul></section>
  </div>
  <p class="wrap legal">© {PUBLICADO[:4]} {e(NOME)} Ltda. Conteúdo informativo; não substitui análise individual do caso da sua empresa.</p>
 </footer>
@@ -618,7 +623,7 @@ def build():
          lead="Como a tecnologia acelera o fechamento e reduz erros.")
 
     # ---------- SOBRE
-    autor_bloco = (f"<p>Os conteúdos do site são escritos e revisados por {autor_html()}.</p>" if AUTOR_NOME else
+    autor_bloco = (f"<p>A responsabilidade técnica do escritório é do contador <strong>{e(AUTOR_NOME)}</strong>, registrado no Conselho Regional de Contabilidade do Amazonas sob o número {e(AUTOR_CRC)}. Ele escreve e revisa os artigos e orientações publicados neste site.</p>" if AUTOR_NOME else
                    f"<p>Os conteúdos do site são produzidos e revisados pela equipe técnica de contadores da A M, que atende diariamente empresas do Simples Nacional, Lucro Presumido e Lucro Real.</p>")
     body = f"""
 <section aria-labelledby="h-quem"><h2 id="h-quem">Quem somos</h2>
@@ -1074,6 +1079,8 @@ def build():
 - WhatsApp: {TEL1_TXT} e {TEL2_TXT} · E-mail: {EMAIL}
 - Horário: {HORARIO}
 - Instagram: {INSTAGRAM}
+- Google Maps e avaliações: {GOOGLE_MAPS}
+- Responsável técnico: {AUTOR_NOME}, contador, {AUTOR_CRC}
 
 ## Páginas principais
 - [Contabilidade digital em Manaus]({SITE}/contabilidade-digital-manaus/): sistema Onvio/Domínio, Portal do Cliente, app do empregado e contador dedicado
