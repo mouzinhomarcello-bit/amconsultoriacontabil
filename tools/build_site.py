@@ -245,7 +245,8 @@ def page(path, title, desc, body, h1, *, extra_schema=None, parent=None, ptype="
    <h2 id="rod-empresa" class="rod-logo"><img src="/assets/logo-am.png" alt="{e(NOME)}" width="170" height="64" loading="lazy"></h2>
    <p>{e(RAZAO)}<br>CNPJ {CNPJ}</p>
    <address>{e(ENDERECO['rua'])} — {e(ENDERECO['bairro'])}<br>{ENDERECO['cidade']}/{ENDERECO['uf']} · CEP {ENDERECO['cep']}<br>
-   WhatsApp: <a href="https://wa.me/{TEL1_INTL[1:]}">{TEL1_TXT}</a> · <a href="https://wa.me/{TEL2_INTL[1:]}">{TEL2_TXT}</a><br>
+   Telefone: <a href="tel:{TEL1_INTL}">{TEL1_TXT}</a> ou <a href="tel:{TEL2_INTL}">{TEL2_TXT}</a><br>
+   WhatsApp: <a href="https://wa.me/{TEL1_INTL[1:]}">{TEL1_TXT}</a><br>
    E-mail: <a href="mailto:{EMAIL}">{EMAIL}</a><br>{HORARIO}</address>
   </section>
   <nav aria-labelledby="rod-mapa"><h2 id="rod-mapa">Mapa do site</h2><ul>
@@ -641,7 +642,8 @@ def build():
 <address class="contato">
 <p><strong>{e(RAZAO)}</strong></p>
 <p>{e(ENDERECO['rua'])} — {e(ENDERECO['bairro'])}<br>{ENDERECO['cidade']}/{ENDERECO['uf']} · CEP {ENDERECO['cep']}</p>
-<p>WhatsApp: <a href="https://wa.me/{TEL1_INTL[1:]}">{TEL1_TXT}</a> · <a href="https://wa.me/{TEL2_INTL[1:]}">{TEL2_TXT}</a></p>
+<p>Telefone: <a href="tel:{TEL1_INTL}">{TEL1_TXT}</a> ou <a href="tel:{TEL2_INTL}">{TEL2_TXT}</a></p>
+<p>WhatsApp: <a href="https://wa.me/{TEL1_INTL[1:]}">{TEL1_TXT}</a> ou <a href="https://wa.me/{TEL2_INTL[1:]}">{TEL2_TXT}</a></p>
 <p>E-mail: <a href="mailto:{EMAIL}">{EMAIL}</a></p>
 <p>Horário: {HORARIO}</p>
 </address>
@@ -679,6 +681,9 @@ def build():
          "<p>Recebemos seus dados. Um contador da A M vai entrar em contato pelo WhatsApp ou e-mail informado.</p><p><a href=\"/conteudos/\">Enquanto isso, veja nossos conteúdos</a>.</p>",
          "Obrigado! Recebemos sua solicitação", priority="0.1")
     PAGES.pop()  # /obrigado/ fora do sitemap
+    _ob = os.path.join(OUT, "obrigado", "index.html")
+    _t = open(_ob, encoding="utf-8").read().replace('<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">', '<meta name="robots" content="noindex, follow">')
+    open(_ob, "w", encoding="utf-8").write(_t)
 
     # ================================================= ARTIGOS
     artigos = []
