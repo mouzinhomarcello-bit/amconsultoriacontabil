@@ -27,9 +27,9 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="alternate" type="text/plain" href="/llms.txt" title="Resumo do site para IA">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="preload" href="/assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/source-serif-4-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css?v=4">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -262,7 +262,6 @@
 <main id="conteudo">
 <article class="pagina">
 <header class="hero">
- <div class="hero-grade" aria-hidden="true"></div>
  <div class="wrap hero-in">
   <div class="hero-txt">
    <nav class="breadcrumb" aria-label="Trilha de navegação"><ol><li><a href="/">Início</a></li><li aria-current="page">Consultoria contábil e fiscal em Manaus</li></ol></nav>
@@ -295,7 +294,7 @@
 </ol></section>
 <section class="faq" aria-labelledby="faq-cf"><h2 id="faq-cf">Perguntas sobre consultoria contábil e fiscal</h2><details><summary><h3>Qual a diferença entre contabilidade e consultoria contábil?</h3></summary><div class="resp"><p>A contabilidade cuida das obrigações: escrituração, impostos e declarações. A consultoria usa esses números para orientar decisões, como escolher o regime tributário, reduzir impostos de forma legal, organizar o caixa e preparar a empresa para crescer.</p></div></details><details><summary><h3>O que faz uma consultoria fiscal?</h3></summary><div class="resp"><p>Revisa a apuração de impostos federais, estaduais e municipais, a classificação dos produtos e serviços nas notas, as retenções e as obrigações acessórias, para evitar multas e identificar tributos pagos a mais.</p></div></details><details><summary><h3>Preciso ser cliente da contabilidade para contratar a consultoria?</h3></summary><div class="resp"><p>Não. A consultoria pode ser contratada por projeto, por exemplo, uma revisão tributária ou um estudo de regime, mesmo que a sua contabilidade seja feita por outro escritório.</p></div></details><details><summary><h3>A consultoria pode reduzir meus impostos?</h3></summary><div class="resp"><p>Muitas vezes, sim, de forma legal: escolhendo o regime certo, aproveitando créditos, segregando receitas corretamente e recuperando valores pagos a mais nos últimos 5 anos. O resultado depende de cada caso e é apresentado com cálculos antes de qualquer mudança.</p></div></details></section>
 <section class="fontes" aria-labelledby="fontes-titulo"><h2 id="fontes-titulo">Fontes consultadas</h2><ul><li><a href="https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm" rel="noopener" target="_blank">Lei Complementar nº 123/2006 (Simples Nacional) — Planalto</a></li><li><a href="https://www.planalto.gov.br/ccivil_03/leis/l5172compilado.htm" rel="noopener" target="_blank">Código Tributário Nacional, art. 168 (prazo de 5 anos para restituição) — Planalto</a></li><li><a href="https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214.htm" rel="noopener" target="_blank">Lei Complementar nº 214/2025 (IBS e CBS) — Planalto</a></li></ul></section>
-<aside class="cta" aria-label="Contato"><p><strong>Quer uma análise contábil e fiscal da sua empresa?.</strong> Atendimento 100% digital para Manaus e todo o Brasil.</p><p><a class="btn btn-ouro" href="/orcamento/">Solicitar orçamento</a> <a class="btn btn-linha" href="https://wa.me/559294312735">Falar pelo WhatsApp</a></p></aside>
+<aside class="cta" aria-label="Contato"><p><strong>Quer uma análise contábil e fiscal da sua empresa?</strong> Atendimento 100% digital para Manaus e todo o Brasil.</p><p><a class="btn btn-ouro" href="/orcamento/">Solicitar orçamento</a> <a class="btn btn-linha" href="https://wa.me/559294312735">Falar pelo WhatsApp</a></p></aside>
 
 </div>
 </article>
@@ -329,9 +328,6 @@
 (function(){var d=document.documentElement;d.classList.add('js');
 var b=document.querySelector('.menu-btn'),n=document.getElementById('menu-principal');
 if(b&&n){b.addEventListener('click',function(){var o=n.classList.toggle('aberto');b.setAttribute('aria-expanded',o)})}
-if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('visivel');io.unobserve(x.target)}})},{rootMargin:'0px 0px -8% 0px'});
-document.querySelectorAll('.corpo > section, .corpo > aside, .card').forEach(function(el){el.classList.add('revela');io.observe(el)});
 })();
 </script>
 </body>

@@ -27,9 +27,9 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="alternate" type="text/plain" href="/llms.txt" title="Resumo do site para IA">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="preload" href="/assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/source-serif-4-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css?v=4">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -238,7 +238,6 @@
 <main id="conteudo">
 <article class="pagina">
 <header class="hero">
- <div class="hero-grade" aria-hidden="true"></div>
  <div class="wrap hero-in">
   <div class="hero-txt">
    <nav class="breadcrumb" aria-label="Trilha de navegação"><ol><li><a href="/">Início</a></li><li aria-current="page">Como abrir uma empresa em Manaus</li></ol></nav>
@@ -264,7 +263,7 @@
 </ol></section>
 <section class="faq" aria-labelledby="faq-abrir"><h2 id="faq-abrir">Dúvidas sobre abrir empresa</h2><details><summary><h3>Qual regime tributário escolher ao abrir a empresa?</h3></summary><div class="resp"><p>Depende da atividade (CNAE), do faturamento previsto e do peso da folha de pagamento. Para empresas de serviços, o Fator R (folha ÷ receita ≥ 28%) define se o Simples usa o Anexo III ou o V. Veja o nosso <a href="/conteudos/simples-nacional-ou-lucro-presumido-estudo-manaus-2026/">estudo comparativo 2026</a>.</p></div></details><details><summary><h3>Onde a empresa é registrada em Manaus?</h3></summary><div class="resp"><p>O registro de sociedades empresárias é feito na Junta Comercial do Estado do Amazonas (JUCEA), integrada à Redesim. Depois vêm CNPJ, inscrição municipal na Prefeitura de Manaus e, quando a atividade exige, inscrição estadual na SEFAZ-AM e licenças.</p></div></details><details><summary><h3>Quanto tempo leva para abrir uma empresa?</h3></summary><div class="resp"><p>O prazo varia conforme a atividade, a consulta de viabilidade do endereço e as licenças exigidas. Informamos o cronograma estimado após analisar o seu caso.</p></div></details><details><summary><h3>A A M abre MEI?</h3></summary><div class="resp"><p>Não. A A M trabalha com microempresas e empresas de pequeno e médio porte (ME, EPP e demais), não com MEI.</p></div></details></section>
 <section class="fontes" aria-labelledby="fontes-titulo"><h2 id="fontes-titulo">Fontes consultadas</h2><ul><li><a href="https://www.jucea.am.gov.br/" rel="noopener" target="_blank">Junta Comercial do Estado do Amazonas (JUCEA)</a></li><li><a href="https://www8.receita.fazenda.gov.br/simplesnacional/" rel="noopener" target="_blank">Portal do Simples Nacional — Receita Federal</a></li><li><a href="https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm" rel="noopener" target="_blank">Lei Complementar nº 123/2006 (Simples Nacional) — Planalto</a></li></ul></section>
-<aside class="cta" aria-label="Contato"><p><strong>Vai abrir sua empresa?.</strong> Atendimento 100% digital para Manaus e todo o Brasil.</p><p><a class="btn btn-ouro" href="/orcamento/">Solicitar orçamento</a> <a class="btn btn-linha" href="https://wa.me/559294312735">Falar pelo WhatsApp</a></p></aside>
+<aside class="cta" aria-label="Contato"><p><strong>Vai abrir sua empresa?</strong> Atendimento 100% digital para Manaus e todo o Brasil.</p><p><a class="btn btn-ouro" href="/orcamento/">Solicitar orçamento</a> <a class="btn btn-linha" href="https://wa.me/559294312735">Falar pelo WhatsApp</a></p></aside>
 
 </div>
 </article>
@@ -298,9 +297,6 @@
 (function(){var d=document.documentElement;d.classList.add('js');
 var b=document.querySelector('.menu-btn'),n=document.getElementById('menu-principal');
 if(b&&n){b.addEventListener('click',function(){var o=n.classList.toggle('aberto');b.setAttribute('aria-expanded',o)})}
-if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('visivel');io.unobserve(x.target)}})},{rootMargin:'0px 0px -8% 0px'});
-document.querySelectorAll('.corpo > section, .corpo > aside, .card').forEach(function(el){el.classList.add('revela');io.observe(el)});
 })();
 </script>
 </body>

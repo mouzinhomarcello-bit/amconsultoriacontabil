@@ -27,9 +27,9 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="alternate" type="text/plain" href="/llms.txt" title="Resumo do site para IA">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="preload" href="/assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/source-serif-4-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css?v=4">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -201,7 +201,6 @@
 <main id="conteudo">
 <article class="pagina">
 <header class="hero">
- <div class="hero-grade" aria-hidden="true"></div>
  <div class="wrap hero-in">
   <div class="hero-txt">
    <nav class="breadcrumb" aria-label="Trilha de navegação"><ol><li><a href="/">Início</a></li><li aria-current="page">Sobre a A M Consultoria e Auditoria Contábil</li></ol></nav>
@@ -223,7 +222,7 @@
 <section aria-labelledby="h-dados"><h2 id="h-dados">Dados da empresa</h2>
 <dl class="pilares"><dt>Razão social</dt><dd>A M CONSULTORIA E AUDITORIA CONTABIL LTDA</dd><dt>CNPJ</dt><dd>62.806.802/0001-40</dd>
 <dt>Endereço</dt><dd>Rua Mocajuba, nº 93, Sala 05, Dom Pedro I, Manaus/AM, CEP 69040-530</dd>
-<dt>Horário</dt><dd>Segunda a sexta, das 8h às 18h</dd><dt>Contato</dt><dd>WhatsApp (92) 9431-2735 · (11) 98202-7102 · contato@amconsultoriacontabil.com.br</dd></dl></section>
+<dt>Horário</dt><dd>Segunda a sexta, das 8h às 18h</dd><dt>Contato</dt><dd>WhatsApp (92) 9431-2735 ou (11) 98202-7102, e-mail contato@amconsultoriacontabil.com.br</dd></dl></section>
 <aside class="cta" aria-label="Contato"><p><strong>Fale com um contador da A M.</strong> Atendimento 100% digital para Manaus e todo o Brasil.</p><p><a class="btn btn-ouro" href="/orcamento/">Solicitar orçamento</a> <a class="btn btn-linha" href="https://wa.me/559294312735">Falar pelo WhatsApp</a></p></aside>
 
 </div>
@@ -258,9 +257,6 @@
 (function(){var d=document.documentElement;d.classList.add('js');
 var b=document.querySelector('.menu-btn'),n=document.getElementById('menu-principal');
 if(b&&n){b.addEventListener('click',function(){var o=n.classList.toggle('aberto');b.setAttribute('aria-expanded',o)})}
-if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('visivel');io.unobserve(x.target)}})},{rootMargin:'0px 0px -8% 0px'});
-document.querySelectorAll('.corpo > section, .corpo > aside, .card').forEach(function(el){el.classList.add('revela');io.observe(el)});
 })();
 </script>
 </body>

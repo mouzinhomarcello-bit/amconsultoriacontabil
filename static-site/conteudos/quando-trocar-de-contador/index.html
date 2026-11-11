@@ -27,9 +27,9 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="alternate" type="text/plain" href="/llms.txt" title="Resumo do site para IA">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="preload" href="/assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/source-serif-4-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css?v=4">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -235,7 +235,6 @@
 <main id="conteudo">
 <article class="pagina">
 <header class="hero">
- <div class="hero-grade" aria-hidden="true"></div>
  <div class="wrap hero-in">
   <div class="hero-txt">
    <nav class="breadcrumb" aria-label="Trilha de navegação"><ol><li><a href="/">Início</a></li><li><a href="/conteudos/">Conteúdos</a></li><li aria-current="page">Quando sua empresa deve trocar de contador? 7 sinais claros</li></ol></nav>
@@ -248,7 +247,7 @@
  </div>
 </header>
 <div class="wrap corpo">
-<p class="meta">Por <a href="/sobre/#equipe" rel="author">Equipe técnica da A M Consultoria</a> · Publicado em <time datetime="2026-11-08">8 de novembro de 2026</time> · Atualizado em <time datetime="2026-11-08">8 de novembro de 2026</time> · 5 min de leitura</p><aside class="resumo" aria-label="Resumo"><h2>Resposta rápida</h2><p>É hora de trocar quando o contador só envia guias, não entrega balancete nem DRE, não revisa o regime tributário e não orienta sobre mudanças legais. A troca pode ser feita em qualquer mês, com data de corte e termo de entrega de documentos.</p></aside>
+<p class="meta">Por <a href="/sobre/#equipe" rel="author">Equipe técnica da A M Consultoria</a>. Publicado em <time datetime="2026-11-08">8 de novembro de 2026</time>, atualizado em <time datetime="2026-11-08">8 de novembro de 2026</time>. Leitura de 5 minutos.</p><aside class="resumo" aria-label="Resumo"><h2>Resposta rápida</h2><p>É hora de trocar quando o contador só envia guias, não entrega balancete nem DRE, não revisa o regime tributário e não orienta sobre mudanças legais. A troca pode ser feita em qualquer mês, com data de corte e termo de entrega de documentos.</p></aside>
 <p>Trocar de contador costuma ser adiado por receio de burocracia, mas manter um serviço que não acompanha a empresa custa caro em multas, impostos pagos a mais e decisões tomadas sem números.</p>
 <section aria-labelledby="h-7"><h2 id="h-7">7 sinais de que sua empresa precisa trocar de contador</h2><ol>
 <li><strong>Guias chegam no dia do vencimento</strong>, sem tempo para conferir ou programar o caixa.</li>
@@ -294,9 +293,6 @@
 (function(){var d=document.documentElement;d.classList.add('js');
 var b=document.querySelector('.menu-btn'),n=document.getElementById('menu-principal');
 if(b&&n){b.addEventListener('click',function(){var o=n.classList.toggle('aberto');b.setAttribute('aria-expanded',o)})}
-if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('visivel');io.unobserve(x.target)}})},{rootMargin:'0px 0px -8% 0px'});
-document.querySelectorAll('.corpo > section, .corpo > aside, .card').forEach(function(el){el.classList.add('revela');io.observe(el)});
 })();
 </script>
 </body>

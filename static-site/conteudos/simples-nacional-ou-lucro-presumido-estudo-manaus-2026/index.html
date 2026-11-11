@@ -27,9 +27,9 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="alternate" type="text/plain" href="/llms.txt" title="Resumo do site para IA">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="preload" href="/assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/source-serif-4-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css?v=4">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -292,7 +292,6 @@
 <main id="conteudo">
 <article class="pagina">
 <header class="hero">
- <div class="hero-grade" aria-hidden="true"></div>
  <div class="wrap hero-in">
   <div class="hero-txt">
    <nav class="breadcrumb" aria-label="Trilha de navegação"><ol><li><a href="/">Início</a></li><li><a href="/conteudos/">Conteúdos</a></li><li aria-current="page">Simples ou Lucro Presumido em 2026: estudo A M para serviços</li></ol></nav>
@@ -305,7 +304,7 @@
  </div>
 </header>
 <div class="wrap corpo">
-<p class="meta">Por <a href="/sobre/#equipe" rel="author">Equipe técnica da A M Consultoria</a> · Publicado em <time datetime="2026-11-08">8 de novembro de 2026</time> · Atualizado em <time datetime="2026-11-08">8 de novembro de 2026</time> · 8 min de leitura</p><aside class="resumo" aria-label="Resumo"><h2>Resposta rápida</h2><p>Para empresas de serviços, quem tem folha de pagamento de pelo menos 28% da receita (Fator R) costuma pagar menos no Simples Nacional, Anexo III. Quem tem folha baixa cai no Anexo V; nesse caso o Lucro Presumido foi mais barato quando o ISS é de 2%, mas com ISS de 5% o Simples continuou mais barato na maioria das faixas.</p></aside>
+<p class="meta">Por <a href="/sobre/#equipe" rel="author">Equipe técnica da A M Consultoria</a>. Publicado em <time datetime="2026-11-08">8 de novembro de 2026</time>, atualizado em <time datetime="2026-11-08">8 de novembro de 2026</time>. Leitura de 8 minutos.</p><aside class="resumo" aria-label="Resumo"><h2>Resposta rápida</h2><p>Para empresas de serviços, quem tem folha de pagamento de pelo menos 28% da receita (Fator R) costuma pagar menos no Simples Nacional, Anexo III. Quem tem folha baixa cai no Anexo V; nesse caso o Lucro Presumido foi mais barato quando o ISS é de 2%, mas com ISS de 5% o Simples continuou mais barato na maioria das faixas.</p></aside>
 <section aria-labelledby="h-res"><h2 id="h-res">Principais resultados</h2>
 <ul>
 <li>Com folha de pagamento de <strong>30% da receita</strong> (Fator R atendido, Anexo III), o Simples Nacional teve a menor carga em todas as faixas simuladas, de R$ 180 mil a R$ 4,8 milhões por ano.</li>
@@ -315,7 +314,7 @@
 </ul></section>
 <section aria-labelledby="h-t30"><h2 id="h-t30">Cenário 1: empresa de serviços com folha de 30% (Anexo III)</h2><div class="tabela"><table><caption>Carga efetiva sobre a receita — folha de 30% da receita</caption><thead><tr><th scope="col">Receita bruta anual</th><th scope="col">Simples Nacional (Anexo III)</th><th scope="col">Lucro Presumido, ISS 5%</th><th scope="col">Lucro Presumido, ISS 2%</th><th scope="col">Menor carga</th></tr></thead><tbody><tr><th scope="row">R$ 180.000</th><td>6,0%</td><td>22,3%</td><td>19,3%</td><td>Simples (Anexo III)</td></tr><tr><th scope="row">R$ 360.000</th><td>8,6%</td><td>22,3%</td><td>19,3%</td><td>Simples (Anexo III)</td></tr><tr><th scope="row">R$ 720.000</th><td>11,1%</td><td>22,3%</td><td>19,3%</td><td>Simples (Anexo III)</td></tr><tr><th scope="row">R$ 1.200.000</th><td>13,0%</td><td>23,5%</td><td>20,5%</td><td>Simples (Anexo III)</td></tr><tr><th scope="row">R$ 1.800.000</th><td>14,0%</td><td>24,2%</td><td>21,2%</td><td>Simples (Anexo III)</td></tr><tr><th scope="row">R$ 2.400.000</th><td>15,8%</td><td>24,5%</td><td>21,5%</td><td>Simples (Anexo III)</td></tr><tr><th scope="row">R$ 3.600.000</th><td>17,5%</td><td>24,9%</td><td>21,9%</td><td>Simples (Anexo III)</td></tr><tr><th scope="row">R$ 4.800.000</th><td>19,5%</td><td>25,0%</td><td>22,0%</td><td>Simples (Anexo III)</td></tr></tbody></table></div></section>
 <section aria-labelledby="h-t10"><h2 id="h-t10">Cenário 2: empresa de serviços com folha de 10% (Anexo V)</h2><div class="tabela"><table><caption>Carga efetiva sobre a receita — folha de 10% da receita</caption><thead><tr><th scope="col">Receita bruta anual</th><th scope="col">Simples Nacional (Anexo V)</th><th scope="col">Lucro Presumido, ISS 5%</th><th scope="col">Lucro Presumido, ISS 2%</th><th scope="col">Menor carga</th></tr></thead><tbody><tr><th scope="row">R$ 180.000</th><td>15,5%</td><td>18,3%</td><td>15,3%</td><td>Presumido (ISS 2%)</td></tr><tr><th scope="row">R$ 360.000</th><td>16,8%</td><td>18,3%</td><td>15,3%</td><td>Presumido (ISS 2%)</td></tr><tr><th scope="row">R$ 720.000</th><td>18,1%</td><td>18,3%</td><td>15,3%</td><td>Presumido (ISS 2%)</td></tr><tr><th scope="row">R$ 1.200.000</th><td>19,1%</td><td>19,5%</td><td>16,5%</td><td>Presumido (ISS 2%)</td></tr><tr><th scope="row">R$ 1.800.000</th><td>19,6%</td><td>20,2%</td><td>17,2%</td><td>Presumido (ISS 2%)</td></tr><tr><th scope="row">R$ 2.400.000</th><td>20,4%</td><td>20,5%</td><td>17,5%</td><td>Presumido (ISS 2%)</td></tr><tr><th scope="row">R$ 3.600.000</th><td>21,3%</td><td>20,9%</td><td>17,9%</td><td>Presumido (ISS 2%)</td></tr><tr><th scope="row">R$ 4.800.000</th><td>19,2%</td><td>21,0%</td><td>18,0%</td><td>Presumido (ISS 2%)</td></tr></tbody></table></div>
-<p><a href="dados.json">Baixar os dados da simulação (JSON)</a> · Licença CC BY 4.0: cite "A M Consultoria Contábil, 2026".</p></section>
+<p><a href="dados.json">Baixar os dados da simulação (JSON)</a>. Licença CC BY 4.0: cite "A M Consultoria Contábil, 2026".</p></section>
 <section aria-labelledby="h-met"><h2 id="h-met">Metodologia</h2>
 <ul>
 <li><strong>Simples Nacional:</strong> alíquota efetiva = (receita dos últimos 12 meses × alíquota nominal − parcela a deduzir) ÷ receita, usando as tabelas dos Anexos III e V da LC 123/2006. Receita mensal constante. A Contribuição Previdenciária Patronal (CPP) já está no DAS nesses anexos.</li>
@@ -359,9 +358,6 @@
 (function(){var d=document.documentElement;d.classList.add('js');
 var b=document.querySelector('.menu-btn'),n=document.getElementById('menu-principal');
 if(b&&n){b.addEventListener('click',function(){var o=n.classList.toggle('aberto');b.setAttribute('aria-expanded',o)})}
-if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('visivel');io.unobserve(x.target)}})},{rootMargin:'0px 0px -8% 0px'});
-document.querySelectorAll('.corpo > section, .corpo > aside, .card').forEach(function(el){el.classList.add('revela');io.observe(el)});
 })();
 </script>
 </body>
