@@ -109,6 +109,24 @@
     <priority>0.95</priority>
   </url>
   <url>
+    <loc>https://amconsultoriacontabil.com.br/politica-de-privacidade/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://amconsultoriacontabil.com.br/politica-da-qualidade/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://amconsultoriacontabil.com.br/lgpd/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://amconsultoriacontabil.com.br/conteudos/</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>

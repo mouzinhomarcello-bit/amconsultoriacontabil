@@ -47,6 +47,8 @@ FONTES = {
     "nfeio_cgsn": ("NFE.io — Prazo do Simples Nacional para optar por IBS e CBS fora do DAS (Resolução CGSN nº 194/2026)", "https://nfe.io/blog/reforma-tributaria/novo-prazo-simples-nacional-ibs-cbs/"),
     "omie_zfm": ("Omie — Zona Franca de Manaus na reforma tributária (LC 214/2025, arts. 445 a 455)", "https://www.omie.com.br/blog/zona-franca-manaus-reforma-tributaria-impacto-industrias/"),
     "app_empregado": ("App Onvio Portal do Empregado — Thomson Reuters (App Store)", "https://apps.apple.com/br/app/id1534034198"),
+    "lgpd": ("Lei nº 13.709/2018 (LGPD) — Planalto", "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm"),
+    "anpd": ("Autoridade Nacional de Proteção de Dados (ANPD)", "https://www.gov.br/anpd/pt-br"),
     "lc116": ("Lei Complementar nº 116/2003 (ISS) — Planalto", "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm"),
     "lc214": ("Lei Complementar nº 214/2025 (IBS e CBS) — Planalto", "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214.htm"),
     "lc224": ("Lei Complementar nº 224/2025 — Planalto", "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp224.htm"),
@@ -267,7 +269,7 @@ def page(path, title, desc, body, h1, *, extra_schema=None, parent=None, ptype="
    <li><a href="{GOOGLE_MAPS}" rel="noopener">Ver no Google Maps e ler avaliações</a></li>
    <li><a href="{GOOGLE_AVALIAR}" rel="noopener">Avaliar a A M no Google</a></li></ul></section>
  </div>
- <p class="wrap legal">© {PUBLICADO[:4]} {e(NOME)} Ltda. Conteúdo informativo; não substitui análise individual do caso da sua empresa.</p>
+ <p class="wrap legal"><a href="/politica-de-privacidade/">Política de Privacidade</a> &nbsp;|&nbsp; <a href="/politica-da-qualidade/">Política da Qualidade</a> &nbsp;|&nbsp; <a href="/lgpd/">LGPD</a><br>© {PUBLICADO[:4]} {e(NOME)} Ltda. Conteúdo informativo; não substitui análise individual do caso da sua empresa.</p>
 </footer>
 <a class="zap" href="https://wa.me/{TEL1_INTL[1:]}" aria-label="Falar pelo WhatsApp"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2s.2-1.1.1-1.2-.2-.2-.4-.3Z"/></svg></a>
 <script>
@@ -674,7 +676,7 @@ def build():
 <p><label for="regime">Regime tributário atual</label><select id="regime" name="regime">{opts_reg}</select></p>
 <p><label for="servico">Serviço desejado</label><select id="servico" name="servico">{opts_srv}</select></p>
 <p><label for="mensagem">Conte brevemente a necessidade da sua empresa</label><textarea id="mensagem" name="mensagem" rows="5"></textarea></p>
-<p><label class="check"><input type="checkbox" name="lgpd" required> Concordo com o tratamento dos meus dados exclusivamente para retorno comercial da {e(NOME)} Ltda, nos termos da LGPD (Lei nº 13.709/2018).</label></p>
+<p><label class="check"><input type="checkbox" name="lgpd" required> Concordo com o tratamento dos meus dados exclusivamente para retorno comercial da {e(NOME)} Ltda, nos termos da LGPD (Lei nº 13.709/2018) e da <a href="/politica-de-privacidade/">Política de Privacidade</a>.</label></p>
 <p><button class="btn btn-ouro" type="submit">Solicitar proposta</button></p>
 </form>
 """
@@ -995,6 +997,103 @@ def build():
          body, "Consultoria em reforma tributária para empresas de Manaus",
          extra_schema=[servico_schema("Consultoria em reforma tributária", "Diagnóstico, simulação de impacto de CBS e IBS e adequação de cadastros, preços e contratos.", "/reforma-tributaria-manaus/"), faq_schema(rt_faq)],
          priority="0.95", lead="Diagnóstico, simulação de impacto e ajustes práticos antes de a CBS e o IBS chegarem ao seu caixa.")
+
+    # ================================================= PÁGINAS INSTITUCIONAIS (privacidade, qualidade, LGPD)
+    VIGENCIA = "2026-11-11"
+    vig = f'<p class="meta">Vigente desde <time datetime="{VIGENCIA}">{data_br(VIGENCIA)}</time>. Responsável: {e(RAZAO)}, CNPJ {CNPJ}.</p>'
+
+    body = vig + f"""
+<section aria-labelledby="pp-1"><h2 id="pp-1">Quem é o controlador dos dados</h2>
+<p>O controlador dos dados pessoais tratados neste site é a {e(RAZAO)}, inscrita no CNPJ {CNPJ}, com sede na {e(ENDERECO['rua'])}, {e(ENDERECO['bairro'])}, {ENDERECO['cidade']}/{ENDERECO['uf']}, CEP {ENDERECO['cep']}.</p>
+<p><strong>Encarregado pelo tratamento de dados (DPO):</strong> {e(AUTOR_NOME)}, pelo e-mail <a href="mailto:{EMAIL}">{EMAIL}</a>.</p></section>
+<section aria-labelledby="pp-2"><h2 id="pp-2">Quais dados coletamos</h2>
+<ul>
+<li><strong>Formulário de orçamento:</strong> nome, nome da empresa, CNPJ, WhatsApp, e-mail, cidade, regime tributário, serviço desejado e a mensagem que você escrever.</li>
+<li><strong>Contato por WhatsApp, e-mail ou telefone:</strong> os dados que você enviar na conversa.</li>
+<li><strong>Dados técnicos de acesso:</strong> endereço IP, data e hora, navegador e páginas acessadas, registrados automaticamente pelo provedor de hospedagem para segurança e funcionamento do site.</li>
+</ul>
+<p>Não coletamos dados sensíveis pelo site e não vendemos dados pessoais.</p></section>
+<section aria-labelledby="pp-3"><h2 id="pp-3">Para que usamos e com qual base legal</h2>
+<div class="tabela"><table><caption>Finalidades e bases legais (art. 7º da Lei 13.709/2018)</caption>
+<thead><tr><th scope="col">Finalidade</th><th scope="col" style="text-align:left">Base legal</th></tr></thead><tbody>
+<tr><th scope="row">Responder ao pedido de orçamento e enviar proposta</th><td style="text-align:left">Consentimento e procedimentos preliminares a um contrato (art. 7º, I e V)</td></tr>
+<tr><th scope="row">Prestar os serviços contratados</th><td style="text-align:left">Execução de contrato e cumprimento de obrigação legal ou regulatória (art. 7º, V e II)</td></tr>
+<tr><th scope="row">Segurança do site e prevenção de fraudes</th><td style="text-align:left">Legítimo interesse (art. 7º, IX)</td></tr>
+<tr><th scope="row">Atender a órgãos públicos e ordens judiciais</th><td style="text-align:left">Cumprimento de obrigação legal e exercício regular de direitos (art. 7º, II e VI)</td></tr>
+</tbody></table></div></section>
+<section aria-labelledby="pp-4"><h2 id="pp-4">Com quem compartilhamos</h2>
+<ul>
+<li><strong>Hospedagem do site (Netlify, Inc.):</strong> armazena as páginas e recebe os dados do formulário. Os servidores podem ficar fora do Brasil; essa transferência internacional segue o art. 33 da LGPD.</li>
+<li><strong>Sistemas contábeis (Domínio e Onvio, da Thomson Reuters):</strong> usados para prestar os serviços aos clientes.</li>
+<li><strong>Órgãos públicos:</strong> Receita Federal, SEFAZ-AM, Prefeitura de Manaus, eSocial e outros, quando a lei exige para cumprir as obrigações dos clientes.</li>
+</ul></section>
+<section aria-labelledby="pp-5"><h2 id="pp-5">Por quanto tempo guardamos</h2>
+<p>Dados de quem pediu orçamento e não contratou: até 12 meses, ou antes se você pedir a exclusão. Dados de clientes: pelo tempo do contrato e pelos prazos legais de guarda de documentos contábeis, fiscais e trabalhistas. Registros técnicos de acesso: pelo prazo do Marco Civil da Internet (6 meses).</p></section>
+<section aria-labelledby="pp-6"><h2 id="pp-6">Cookies</h2>
+<p>Este site não usa cookies de publicidade nem ferramentas de rastreamento. As fontes e imagens são servidas pelo próprio site. Ao clicar em links externos (WhatsApp, Instagram, Facebook, Google Maps, Portal do Cliente), você passa a seguir a política de privacidade desses serviços.</p></section>
+<section aria-labelledby="pp-7"><h2 id="pp-7">Seus direitos</h2>
+<p>Conforme o art. 18 da LGPD, você pode pedir a qualquer momento: confirmação de que tratamos seus dados, acesso, correção, anonimização, bloqueio ou eliminação de dados desnecessários, portabilidade, informação sobre compartilhamento e revogação do consentimento. Envie o pedido para <a href="mailto:{EMAIL}">{EMAIL}</a>; respondemos em até 15 dias. Você também pode reclamar à Autoridade Nacional de Proteção de Dados (ANPD).</p></section>
+<section aria-labelledby="pp-8"><h2 id="pp-8">Alterações</h2>
+<p>Esta política pode ser atualizada. A data de vigência no topo da página sempre mostra a versão em vigor.</p></section>
+{fontes_html(["lgpd", "anpd"])}
+"""
+    page("/politica-de-privacidade/", f"Política de Privacidade | {NOME}",
+         "Como a A M Consultoria Contábil coleta, usa, compartilha e protege dados pessoais no site e nos serviços, e como exercer seus direitos pela LGPD.",
+         body, "Política de Privacidade", priority="0.3", freq="yearly", published=VIGENCIA, modified=VIGENCIA,
+         lead="Como tratamos os dados pessoais de quem visita o site, pede orçamento ou é nosso cliente.")
+
+    body = vig + f"""
+<p>A {e(NOME)} tem como propósito entregar contabilidade correta, no prazo e explicada com clareza, para que cada cliente tome decisões com segurança. Para isso, assume os compromissos abaixo.</p>
+<section aria-labelledby="pq-1"><h2 id="pq-1">Nossos compromissos</h2>
+<dl class="pilares">
+<dt>Exatidão técnica</dt><dd>Seguir as Normas Brasileiras de Contabilidade e a legislação tributária, trabalhista e societária, com conferência das apurações antes da entrega.</dd>
+<dt>Cumprimento de prazos</dt><dd>Entregar guias, declarações e obrigações acessórias dentro dos prazos legais, com antecedência suficiente para o cliente se organizar.</dd>
+<dt>Comunicação clara</dt><dd>Explicar números, impostos e mudanças legais em linguagem simples e responder às dúvidas com agilidade.</dd>
+<dt>Sigilo e ética</dt><dd>Guardar sigilo sobre as informações dos clientes, conforme o Código de Ética Profissional do Contador (NBC PG 01), e tratar dados pessoais conforme a LGPD.</dd>
+<dt>Tecnologia e segurança</dt><dd>Usar sistemas confiáveis e integrados, com acesso controlado a documentos pelo Portal do Cliente.</dd>
+<dt>Atualização constante</dt><dd>Manter a equipe atualizada sobre mudanças na legislação, como a reforma tributária, por meio de educação profissional continuada.</dd>
+<dt>Melhoria contínua</dt><dd>Ouvir os clientes, registrar sugestões e reclamações e revisar processos para evitar que falhas se repitam.</dd>
+</dl></section>
+<section aria-labelledby="pq-2"><h2 id="pq-2">Como acompanhamos</h2>
+<p>Revisamos periodicamente o cumprimento de prazos, a ocorrência de retrabalho e a satisfação dos clientes. Sugestões e reclamações podem ser enviadas para <a href="mailto:{EMAIL}">{EMAIL}</a> ou pelo WhatsApp e são respondidas pelo responsável técnico.</p></section>
+{fontes_html(["cfc"])}
+{cta()}
+"""
+    page("/politica-da-qualidade/", f"Política da Qualidade | {NOME}",
+         "Compromissos da A M Consultoria Contábil com exatidão técnica, prazos, comunicação clara, sigilo, segurança da informação e melhoria contínua.",
+         body, "Política da Qualidade", priority="0.3", freq="yearly", published=VIGENCIA, modified=VIGENCIA,
+         lead="Os compromissos que orientam o trabalho da A M com cada cliente.")
+
+    lgpd_faq = [
+        ("O escritório de contabilidade precisa seguir a LGPD?", "Sim. O escritório trata dados pessoais de sócios, empregados e clientes das empresas que atende, como CPF, endereço, salário e dados de dependentes, e por isso deve seguir a Lei 13.709/2018."),
+        ("A A M é controladora ou operadora dos dados dos meus empregados?", "Em regra, a sua empresa é a controladora dos dados dos empregados, e a A M atua como operadora, tratando esses dados por conta da sua empresa para processar folha, eSocial e obrigações trabalhistas. Para os dados coletados no próprio site, a A M é a controladora."),
+        ("Como peço acesso ou exclusão dos meus dados?", f"Envie um e-mail para {EMAIL} informando o pedido. Respondemos em até 15 dias. Dados que a lei obriga a guardar, como documentos fiscais e trabalhistas, são mantidos pelo prazo legal."),
+    ]
+    body = vig + f"""
+<p>A Lei Geral de Proteção de Dados Pessoais (Lei 13.709/2018) define regras para coletar, usar, guardar e compartilhar dados de pessoas. Por lidar diariamente com dados de sócios, empregados e clientes, a contabilidade é uma das atividades em que a LGPD mais pesa. Veja como a A M cumpre a lei.</p>
+<section aria-labelledby="lg-1"><h2 id="lg-1">Nosso papel</h2>
+<ul>
+<li><strong>Como controladora:</strong> dados de quem visita o site, pede orçamento ou fala com a A M. Detalhes na <a href="/politica-de-privacidade/">Política de Privacidade</a>.</li>
+<li><strong>Como operadora:</strong> dados de sócios, empregados e terceiros que os clientes nos entregam para contabilidade, folha de pagamento e obrigações fiscais. Tratamos esses dados apenas para executar os serviços contratados e conforme as instruções do cliente.</li>
+</ul></section>
+<section aria-labelledby="lg-2"><h2 id="lg-2">Princípios que seguimos</h2>
+<ul>
+<li><strong>Finalidade e necessidade:</strong> pedimos só os dados necessários para cada serviço.</li>
+<li><strong>Segurança:</strong> documentos trocados pelo Portal do Cliente, com login individual, em vez de e-mails e papéis soltos; site com conexão segura (HTTPS).</li>
+<li><strong>Sigilo profissional:</strong> além da LGPD, o contador tem dever de sigilo pelo Código de Ética Profissional (NBC PG 01).</li>
+<li><strong>Transparência:</strong> informamos com quem os dados são compartilhados, como órgãos públicos e sistemas contábeis.</li>
+<li><strong>Guarda pelo prazo legal:</strong> documentos contábeis, fiscais e trabalhistas são mantidos pelos prazos exigidos em lei.</li>
+</ul></section>
+<section aria-labelledby="lg-3"><h2 id="lg-3">Encarregado e canal do titular</h2>
+<p>Encarregado pelo tratamento de dados: <strong>{e(AUTOR_NOME)}</strong>. Pedidos de acesso, correção, exclusão ou informações sobre seus dados: <a href="mailto:{EMAIL}">{EMAIL}</a>.</p></section>
+{faq_block(lgpd_faq, "Perguntas sobre LGPD", "faq-lgpd")}
+{fontes_html(["lgpd", "anpd", "cfc"])}
+"""
+    page("/lgpd/", f"LGPD: como protegemos seus dados | {NOME}",
+         "Como a A M Consultoria Contábil aplica a LGPD: papel de controladora e operadora, princípios, segurança, sigilo profissional e canal do titular de dados.",
+         body, "LGPD: como protegemos os seus dados", extra_schema=[faq_schema(lgpd_faq)],
+         priority="0.4", freq="yearly", published=VIGENCIA, modified=VIGENCIA,
+         lead="Contabilidade lida com dados de pessoas todos os dias. Veja como cuidamos deles.")
 
     # ---------- ÍNDICE CONTEÚDOS
     lis = "".join(f'<li class="card"><p class="tag">{e(s)}, leitura de {l} min</p><h2><a href="{p}">{e(t)}</a></h2><p>{e(d)}</p></li>' for p, t, d, s, l in artigos)
