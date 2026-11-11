@@ -1106,6 +1106,7 @@ def build():
 /solucoes      /especialidades/   301
 # Domínio único (sem www)
 https://www.amconsultoriacontabil.com.br/*  https://amconsultoriacontabil.com.br/:splat  301!
+https://amconsultoriacontabil.netlify.app/*  https://amconsultoriacontabil.com.br/:splat  301!
 """
     open(os.path.join(OUT, "_redirects"), "w", encoding="utf-8").write(redirects)
     open(os.path.join(OUT, "_headers"), "w", encoding="utf-8").write(

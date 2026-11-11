@@ -3,3 +3,4 @@
 /solucoes      /especialidades/   301
 # Domínio único (sem www)
 https://www.amconsultoriacontabil.com.br/*  https://amconsultoriacontabil.com.br/:splat  301!
+https://amconsultoriacontabil.netlify.app/*  https://amconsultoriacontabil.com.br/:splat  301!
