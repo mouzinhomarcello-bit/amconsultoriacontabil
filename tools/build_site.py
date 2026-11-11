@@ -278,6 +278,7 @@ var b=document.querySelector('.menu-btn'),n=document.getElementById('menu-princi
 if(b&&n){{b.addEventListener('click',function(){{var o=n.classList.toggle('aberto');b.setAttribute('aria-expanded',o)}})}}
 }})();
 </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{{"token": "1327b57a9eb84caeb185e26b7170bc30"}}'></script>
 </body>
 </html>
 """
@@ -1011,6 +1012,7 @@ def build():
 <li><strong>Formulário de orçamento:</strong> nome, nome da empresa, CNPJ, WhatsApp, e-mail, cidade, regime tributário, serviço desejado e a mensagem que você escrever.</li>
 <li><strong>Contato por WhatsApp, e-mail ou telefone:</strong> os dados que você enviar na conversa.</li>
 <li><strong>Dados técnicos de acesso:</strong> endereço IP, data e hora, navegador e páginas acessadas, registrados automaticamente pelo provedor de hospedagem para segurança e funcionamento do site.</li>
+<li><strong>Estatísticas de visitas:</strong> usamos o Cloudflare Web Analytics para contar visitas, páginas vistas, origem do acesso e tipo de dispositivo, de forma agregada. A ferramenta não usa cookies e não identifica visitantes individualmente.</li>
 </ul>
 <p>Não coletamos dados sensíveis pelo site e não vendemos dados pessoais.</p></section>
 <section aria-labelledby="pp-3"><h2 id="pp-3">Para que usamos e com qual base legal</h2>
@@ -1024,13 +1026,14 @@ def build():
 <section aria-labelledby="pp-4"><h2 id="pp-4">Com quem compartilhamos</h2>
 <ul>
 <li><strong>Hospedagem do site (Netlify, Inc.):</strong> armazena as páginas e recebe os dados do formulário. Os servidores podem ficar fora do Brasil; essa transferência internacional segue o art. 33 da LGPD.</li>
+<li><strong>Estatísticas de acesso (Cloudflare, Inc.):</strong> recebe dados técnicos de navegação para gerar estatísticas agregadas, sem cookies. Também pode tratar dados fora do Brasil (art. 33 da LGPD).</li>
 <li><strong>Sistemas contábeis (Domínio e Onvio, da Thomson Reuters):</strong> usados para prestar os serviços aos clientes.</li>
 <li><strong>Órgãos públicos:</strong> Receita Federal, SEFAZ-AM, Prefeitura de Manaus, eSocial e outros, quando a lei exige para cumprir as obrigações dos clientes.</li>
 </ul></section>
 <section aria-labelledby="pp-5"><h2 id="pp-5">Por quanto tempo guardamos</h2>
 <p>Dados de quem pediu orçamento e não contratou: até 12 meses, ou antes se você pedir a exclusão. Dados de clientes: pelo tempo do contrato e pelos prazos legais de guarda de documentos contábeis, fiscais e trabalhistas. Registros técnicos de acesso: pelo prazo do Marco Civil da Internet (6 meses).</p></section>
 <section aria-labelledby="pp-6"><h2 id="pp-6">Cookies</h2>
-<p>Este site não usa cookies de publicidade nem ferramentas de rastreamento. As fontes e imagens são servidas pelo próprio site. Ao clicar em links externos (WhatsApp, Instagram, Facebook, Google Maps, Portal do Cliente), você passa a seguir a política de privacidade desses serviços.</p></section>
+<p>Este site não usa cookies de publicidade nem de rastreamento. As estatísticas de visitas do Cloudflare Web Analytics funcionam sem cookies e sem identificar quem visita. As fontes e imagens são servidas pelo próprio site. Ao clicar em links externos (WhatsApp, Instagram, Facebook, Google Maps, Portal do Cliente), você passa a seguir a política de privacidade desses serviços.</p></section>
 <section aria-labelledby="pp-7"><h2 id="pp-7">Seus direitos</h2>
 <p>Conforme o art. 18 da LGPD, você pode pedir a qualquer momento: confirmação de que tratamos seus dados, acesso, correção, anonimização, bloqueio ou eliminação de dados desnecessários, portabilidade, informação sobre compartilhamento e revogação do consentimento. Envie o pedido para <a href="mailto:{EMAIL}">{EMAIL}</a>; respondemos em até 15 dias. Você também pode reclamar à Autoridade Nacional de Proteção de Dados (ANPD).</p></section>
 <section aria-labelledby="pp-8"><h2 id="pp-8">Alterações</h2>
