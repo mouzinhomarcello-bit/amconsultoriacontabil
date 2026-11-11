@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "financial-datasets": {
+      "command": "uv",
+      "args": ["--directory", "tools/financial-datasets-mcp", "run", "server.py"],
+      "env": {
+        "FINANCIAL_DATASETS_API_KEY": "proxy-injected"
+      }
+    }
+  }
+}
