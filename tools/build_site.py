@@ -208,7 +208,7 @@ def page(path, title, desc, body, h1, *, extra_schema=None, parent=None, ptype="
 <link rel="alternate" type="text/plain" href="/llms.txt" title="Resumo do site para IA">
 <link rel="preload" href="/assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/source-serif-4-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="stylesheet" href="/assets/site.css?v=5">
 <script type="application/ld+json">
 {ld}
 </script>
@@ -373,8 +373,8 @@ def build():
         ("Onde fica o escritório?", f"{ENDERECO['rua']}, bairro {ENDERECO['bairro']}, {ENDERECO['cidade']}/{ENDERECO['uf']}, CEP {ENDERECO['cep']}. Atendimento {HORARIO.lower()}."),
     ]
     body = f"""
-<section class="intro" aria-label="Apresentação"><p>A <strong>{e(NOME)}</strong> é um escritório de contabilidade em Manaus/AM que cuida da contabilidade, dos impostos e da folha de pagamento de micro, pequenas e médias empresas, com processos digitais e atendimento consultivo direto com contadores. Atendemos empresas no Simples Nacional, Lucro Presumido e Lucro Real, em Manaus e em todo o país.</p>
-<p class="sistemas">Trabalhamos com os sistemas Domínio e Onvio, da Thomson Reuters, integrados ao eSocial, ao SPED, à NF-e e NFS-e, ao FGTS Digital e à DCTFWeb. Seus empregados usam o app Onvio Portal do Empregado.</p></section>
+<section class="intro" aria-label="Apresentação"><figure class="painel-foto"><picture><source srcset="/assets/painel-am.webp" type="image/webp"><img src="/assets/painel-am.jpg" alt="Painel com o logo da A M Consultoria Contábil: barras douradas com seta para cima e as letras A M sobre fundo azul-marinho" width="680" height="380" loading="lazy"></picture></figure><div class="intro-txt"><p>A <strong>{e(NOME)}</strong> é um escritório de contabilidade em Manaus/AM que cuida da contabilidade, dos impostos e da folha de pagamento de micro, pequenas e médias empresas, com processos digitais e atendimento consultivo direto com contadores. Atendemos empresas no Simples Nacional, Lucro Presumido e Lucro Real, em Manaus e em todo o país.</p>
+<p class="sistemas">Trabalhamos com os sistemas Domínio e Onvio, da Thomson Reuters, integrados ao eSocial, ao SPED, à NF-e e NFS-e, ao FGTS Digital e à DCTFWeb. Seus empregados usam o app Onvio Portal do Empregado.</p></div></section>
 
 <section aria-labelledby="h-servicos"><h2 id="h-servicos">Serviços de contabilidade em Manaus</h2>
 <ul class="razao">{cards}</ul>
@@ -626,7 +626,7 @@ def build():
     autor_bloco = (f"<p>A responsabilidade técnica do escritório é do contador <strong>{e(AUTOR_NOME)}</strong>, registrado no Conselho Regional de Contabilidade do Amazonas sob o número {e(AUTOR_CRC)}. Ele escreve e revisa os artigos e orientações publicados neste site.</p>" if AUTOR_NOME else
                    f"<p>Os conteúdos do site são produzidos e revisados pela equipe técnica de contadores da A M, que atende diariamente empresas do Simples Nacional, Lucro Presumido e Lucro Real.</p>")
     body = f"""
-<section aria-labelledby="h-quem"><h2 id="h-quem">Quem somos</h2>
+<section aria-labelledby="h-quem"><figure class="painel-foto"><picture><source srcset="/assets/painel-am.webp" type="image/webp"><img src="/assets/painel-am.jpg" alt="Painel com o logo da A M Consultoria Contábil: barras douradas com seta para cima e as letras A M sobre fundo azul-marinho" width="680" height="380" loading="eager"></picture></figure><h2 id="h-quem">Quem somos</h2>
 <p>A <strong>{e(RAZAO)}</strong> (CNPJ {CNPJ}), fundada em {data_br(FUNDACAO)}, é um escritório de contabilidade com sede em Manaus/AM. Atuamos em contabilidade, fiscal e tributário, departamento pessoal, BPO financeiro, recuperação de créditos de PIS e COFINS, consultoria e auditoria, com processos digitais e atendimento próximo dos sócios.</p></section>
 <section aria-labelledby="h-atuacao"><h2 id="h-atuacao">Onde atuamos</h2>
 <p>Atendemos empresas em Manaus, no interior do Amazonas e em outros estados. Conhecemos as particularidades da Zona Franca de Manaus, do ICMS-AM e do ISS de Manaus, além dos regimes federais.</p></section>
@@ -1127,7 +1127,7 @@ https://amconsultoriacontabil.netlify.app/*  https://amconsultoriacontabil.com.b
     open(os.path.join(OUT, "assets/site.css"), "w").write(CSS)
     import shutil as _sh
     brand = os.path.join(os.path.dirname(os.path.abspath(__file__)), "brand")
-    for fn in ["logo-am.png", "logo-am.webp", "og-image.jpg", "icon-512.png"]:
+    for fn in ["logo-am.png", "logo-am.webp", "og-image.jpg", "icon-512.png", "painel-am.jpg", "painel-am.webp"]:
         _sh.copy(os.path.join(brand, fn), os.path.join(OUT, "assets", fn))
     os.makedirs(os.path.join(OUT, "assets", "fonts"), exist_ok=True)
     for fn in os.listdir(os.path.join(brand, "fonts")):
@@ -1231,6 +1231,12 @@ h2{font-weight:700;font-stretch:108%;font-size:clamp(1.5rem,2.6vw,2rem);line-hei
 .corpo>section:first-child>h2:first-child{margin-top:.2em}
 h3{font-weight:650;font-size:1.12rem;line-height:1.3;color:var(--navy);margin:0 0 .3em}
 .intro p{font-size:1.2rem;line-height:1.6;max-width:40rem}
+.intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:24px 48px;align-items:center}
+.intro .intro-txt{order:1}.intro .painel-foto{order:2}
+.painel-foto{margin:0}.painel-foto img{display:block;width:100%;max-width:560px;height:auto;border-radius:4px;box-shadow:0 24px 50px -28px rgba(0,32,73,.55)}
+section[aria-labelledby="h-quem"]>h2{margin-top:.2em}
+section[aria-labelledby="h-quem"] .painel-foto{float:right;width:min(46%,460px);margin:6px 0 16px 32px}
+@media(max-width:820px){.intro{grid-template-columns:1fr}.intro .painel-foto{order:0}section[aria-labelledby="h-quem"] .painel-foto{float:none;width:100%;margin:0 0 20px}}
 .sistemas{color:var(--suave);font-size:1rem;border-left:3px solid var(--ouro);padding-left:16px}
 
 /* serviços como linhas de um razão */
