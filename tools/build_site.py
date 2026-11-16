@@ -24,7 +24,7 @@ FACEBOOK = "https://www.facebook.com/profile.php?id=61587344352334"
 PORTAL = "https://onvio.com.br/clientcenter/pt/auth"
 GOOGLE_MAPS = "https://www.google.com/maps?cid=9222782699476468875"
 GOOGLE_AVALIAR = "https://search.google.com/local/writereview?placeid=ChIJbdNKDQMRbJIRi8TpMgDo_X8"
-HORARIO = "Segunda a sexta, das 8h às 18h"
+HORARIO = "Segunda a sexta, das 8h às 17h"
 # Autor: preencha nome e CRC do contador responsável para virar autor pessoa (Person) nos artigos.
 AUTOR_NOME = "Marcelo da Silva Mouzinho"
 AUTOR_CRC = "CRC-AM 018065/O-2"
@@ -90,7 +90,7 @@ def org_schema():
         "geo": {"@type": "GeoCoordinates", "latitude": GEO[0], "longitude": GEO[1]},
         "openingHoursSpecification": [{"@type": "OpeningHoursSpecification",
                                        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                                       "opens": "08:00", "closes": "18:00"}],
+                                       "opens": "08:00", "closes": "17:00"}],
         "areaServed": [{"@type": "City", "name": "Manaus"}, {"@type": "State", "name": "Amazonas"},
                        {"@type": "Country", "name": "Brasil"}],
         "knowsAbout": ["Contabilidade empresarial", "Simples Nacional", "Lucro Presumido", "Lucro Real",
